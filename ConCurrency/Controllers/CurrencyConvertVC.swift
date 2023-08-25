@@ -16,17 +16,22 @@ class CurrencyConvertVC: UIViewController {
     @IBOutlet weak private(set) var fromDropDown: DropDown!
     @IBOutlet weak private(set) var toDropDown: DropDown!
     @IBOutlet weak private(set) var resultAmountLabel: CCLabel!
-    @IBOutlet weak var convertButton: UIButton!
-    @IBOutlet weak var addToFavoriteButton: UIButton!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private(set) var convertButton: UIButton!
+    @IBOutlet weak private(set) var addToFavoriteButton: UIButton!
+    @IBOutlet weak private(set) var tableView: UITableView!
     
+    
+    // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additiondal setup after loading the view.
-//        setViewsLayout()
         
+        configureViewsApperance()
+    }
+    
+    // MARK: Methods
+    
+    private func configureViewsApperance() {
         fromDropDown.roundCorner()
         amountTextFiled.roundCorner()
         convertButton.roundCorner()
@@ -34,14 +39,6 @@ class CurrencyConvertVC: UIViewController {
         addToFavoriteButton.roundCorner()
         addToFavoriteButton.layer.borderWidth = 1
     }
-    
-//    func setViewsLayout() {
-////        fromDropDown.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            amountTextFiled.heightAnchor.constraint(equalToConstant: 48),
-////            fromDropDown.heightAnchor.constraint(equalToConstant: 48)
-//        ])
-//    }
 
     // MARK: Actions
     
@@ -49,8 +46,10 @@ class CurrencyConvertVC: UIViewController {
         print("Convert")
     }
     
-    @IBAction func addToFavoriteButtonTapped(_ sender: Any) {
+    @IBAction private func addToFavoriteButtonTapped(_ sender: Any) {
         print("go To favorite")
     }
     
 }
+
+// MARK: - Extensions

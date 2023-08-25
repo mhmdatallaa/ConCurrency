@@ -8,45 +8,48 @@
 import UIKit
 
 class CurrencyHandlerVC: UIViewController {
+    
+    // MARK: IBOutlets
 
-    @IBOutlet weak var segmentControl: UISegmentedControl!
-    @IBOutlet weak var convertSegmentView: UIView!
-    @IBOutlet weak var compareSegmentView: UIView!
+    @IBOutlet weak private(set) var segmentControl: UISegmentedControl!
+    @IBOutlet weak private(set) var convertSegmentView: UIView!
+    @IBOutlet weak private(set) var compareSegmentView: UIView!
+    
+    // MARK: Life cycle
     
     @IBOutlet weak var segmentedView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        view.bringSubviewToFront(convertSegmentView)
-        view.bringSubviewToFront(segmentControl)
-        configureSegmentControl()
-    }
-
-    func configureSegmentControl() {
-        segmentControl.layer.cornerRadius = segmentControl.bounds.height/2
-        segmentControl.clipsToBounds = true
-        segmentControl.layer.masksToBounds = true
+        
+        setConvertView()
     }
     
-    @IBAction func didSwitchSegmentedControl(_ sender: UISegmentedControl) {
+    // MARK: Methods
+    
+    private func setConvertView() {
+        view.bringSubviewToFront(convertSegmentView)
+        view.bringSubviewToFront(segmentControl)
+    }
+    
+    private func setCompareView() {
+        view.bringSubviewToFront(compareSegmentView)
+        view.bringSubviewToFront(segmentControl)
+    }
+    
+    // MARK: Actions
+    
+    @IBAction private func didSwitchSegmentedControl(_ sender: UISegmentedControl) {
         
         switch sender.selectedSegmentIndex {
         case 0:
-//            compareSegmentView.removeFromSuperview()
-//            view.addSubview(convertSegmentView)
-            view.bringSubviewToFront(convertSegmentView)
-            view.bringSubviewToFront(segmentControl)
-
+            setConvertView()
         case 1:
-//            convertSegmentView.removeFromSuperview()
-//            view.addSubview(compareSegmentView)
-            view.bringSubviewToFront(compareSegmentView)
-            view.bringSubviewToFront(segmentControl)
-
+            setCompareView()
         default:
-            break
+            preconditionFailure("Unable to get the righ case.")
         }
     }
     
 }
 
+// MARK: - Extenstions
