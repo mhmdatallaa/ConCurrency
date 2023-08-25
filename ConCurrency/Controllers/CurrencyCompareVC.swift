@@ -12,18 +12,23 @@ class CurrencyCompareVC: UIViewController {
     
     // MARK: IBOutlets
     
-    @IBOutlet weak var amountTextField: UITextField!
-    @IBOutlet weak var fromDropDown: DropDown!
-    @IBOutlet weak var targeted1DropDown: DropDown!
-    @IBOutlet weak var targeted1Label: UILabel!
+    @IBOutlet weak private(set) var amountTextField: UITextField!
+    @IBOutlet weak private(set) var fromDropDown: DropDown!
+    @IBOutlet weak private(set) var targeted1DropDown: DropDown!
+    @IBOutlet weak private(set) var targeted1Label: UILabel!
+    @IBOutlet weak private(set) var targeted2DropDown: DropDown!
+    @IBOutlet weak private(set) var targeted2Label: UILabel!
+    @IBOutlet weak private(set) var compareButton: UIButton!
     
-    @IBOutlet weak var targeted2DropDown: DropDown!
-    @IBOutlet weak var targeted2Label: UILabel!
-    
-    @IBOutlet weak var compareButton: UIButton!
+    // MARK: Life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureViewsApperance()
+    }
+    
+    private func configureViewsApperance() {
         amountTextField.roundCorner()
         fromDropDown.roundCorner()
         targeted1DropDown.roundCorner()
@@ -34,7 +39,7 @@ class CurrencyCompareVC: UIViewController {
     
     // MARK: Actions
 
-    @IBAction func compareButtonTapped(_ sender: Any) {
+    @IBAction private func compareButtonTapped(_ sender: Any) {
         print("compare")
     }
     

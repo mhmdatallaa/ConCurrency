@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CCSegmentControl: UISegmentedControl{
+final class CCSegmentControl: UISegmentedControl{
     private let segmentInset: CGFloat = 5       //your inset amount
     private let segmentImage: UIImage? = UIImage(color: UIColor.white)    //your color
 
