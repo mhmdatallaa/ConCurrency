@@ -18,6 +18,10 @@
 		6D06B5632A98739A004C0F51 /* CurrencyCompareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D06B5622A98739A004C0F51 /* CurrencyCompareVC.swift */; };
 		6D06B5652A987BC1004C0F51 /* CCLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D06B5642A987BC1004C0F51 /* CCLabel.swift */; };
 		6D0F09172A988CBE005A7117 /* UIView+roundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0F09162A988CBE005A7117 /* UIView+roundCorner.swift */; };
+		6D23A7B52A98C6860007C061 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23A7B42A98C6860007C061 /* LogLevel.swift */; };
+		6D23A7B72A98C6910007C061 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23A7B62A98C6910007C061 /* Logging.swift */; };
+		6D23A7B92A98C6A20007C061 /* LogEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23A7B82A98C6A20007C061 /* LogEngine.swift */; };
+		6D23A7BB2A98C6AA0007C061 /* LoggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23A7BA2A98C6AA0007C061 /* LoggerManager.swift */; };
 		6DA64DD62A9894EB0002ABDB /* CCSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA64DD52A9894EB0002ABDB /* CCSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +38,10 @@
 		6D06B5622A98739A004C0F51 /* CurrencyCompareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCompareVC.swift; sourceTree = "<group>"; };
 		6D06B5642A987BC1004C0F51 /* CCLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCLabel.swift; sourceTree = "<group>"; };
 		6D0F09162A988CBE005A7117 /* UIView+roundCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+roundCorner.swift"; sourceTree = "<group>"; };
+		6D23A7B42A98C6860007C061 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
+		6D23A7B62A98C6910007C061 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		6D23A7B82A98C6A20007C061 /* LogEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEngine.swift; sourceTree = "<group>"; };
+		6D23A7BA2A98C6AA0007C061 /* LoggerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerManager.swift; sourceTree = "<group>"; };
 		6DA64DD52A9894EB0002ABDB /* CCSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCSegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,8 +82,20 @@
 				6DA290F82A98AE980081AC44 /* Resources */,
 				6DA290F92A98AEBA0081AC44 /* Controllers */,
 				6DA290FA2A98AED80081AC44 /* Views */,
+				6D23A7B32A98C6560007C061 /* Logger */,
 			);
 			path = ConCurrency;
+			sourceTree = "<group>";
+		};
+		6D23A7B32A98C6560007C061 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				6D23A7B42A98C6860007C061 /* LogLevel.swift */,
+				6D23A7B62A98C6910007C061 /* Logging.swift */,
+				6D23A7B82A98C6A20007C061 /* LogEngine.swift */,
+				6D23A7BA2A98C6AA0007C061 /* LoggerManager.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 		6DA290F82A98AE980081AC44 /* Resources */ = {
@@ -202,12 +222,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D06B54E2A9861D7004C0F51 /* CurrencyHandlerVC.swift in Sources */,
+				6D23A7B72A98C6910007C061 /* Logging.swift in Sources */,
+				6D23A7B92A98C6A20007C061 /* LogEngine.swift in Sources */,
 				6D06B54A2A9861D7004C0F51 /* AppDelegate.swift in Sources */,
 				6D06B54C2A9861D7004C0F51 /* SceneDelegate.swift in Sources */,
+				6D23A7BB2A98C6AA0007C061 /* LoggerManager.swift in Sources */,
 				6D06B5612A987387004C0F51 /* CurrencyConvertVC.swift in Sources */,
 				6D06B5652A987BC1004C0F51 /* CCLabel.swift in Sources */,
 				6D0F09172A988CBE005A7117 /* UIView+roundCorner.swift in Sources */,
 				6DA64DD62A9894EB0002ABDB /* CCSegmentedControl.swift in Sources */,
+				6D23A7B52A98C6860007C061 /* LogLevel.swift in Sources */,
 				6D06B5632A98739A004C0F51 /* CurrencyCompareVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
