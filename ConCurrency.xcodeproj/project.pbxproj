@@ -17,7 +17,8 @@
 		6D06B5612A987387004C0F51 /* CurrencyConvertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D06B5602A987387004C0F51 /* CurrencyConvertVC.swift */; };
 		6D06B5632A98739A004C0F51 /* CurrencyCompareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D06B5622A98739A004C0F51 /* CurrencyCompareVC.swift */; };
 		6D06B5652A987BC1004C0F51 /* CCLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D06B5642A987BC1004C0F51 /* CCLabel.swift */; };
-		6D0B50622A9A8A4800973168 /* UIImage+downloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B50612A9A8A4700973168 /* UIImage+downloadImage.swift */; };
+		6D0B50622A9A8A4800973168 /* UIImageView+downloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B50612A9A8A4700973168 /* UIImageView+downloadImage.swift */; };
+		6D0B50642A9A921B00973168 /* UIImageView+roundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0B50632A9A921B00973168 /* UIImageView+roundImage.swift */; };
 		6D0F09172A988CBE005A7117 /* UIView+roundCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0F09162A988CBE005A7117 /* UIView+roundCorner.swift */; };
 		6D23A7B52A98C6860007C061 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23A7B42A98C6860007C061 /* LogLevel.swift */; };
 		6D23A7B72A98C6910007C061 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23A7B62A98C6910007C061 /* Logging.swift */; };
@@ -61,7 +62,8 @@
 		6D06B5602A987387004C0F51 /* CurrencyConvertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertVC.swift; sourceTree = "<group>"; };
 		6D06B5622A98739A004C0F51 /* CurrencyCompareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCompareVC.swift; sourceTree = "<group>"; };
 		6D06B5642A987BC1004C0F51 /* CCLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCLabel.swift; sourceTree = "<group>"; };
-		6D0B50612A9A8A4700973168 /* UIImage+downloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+downloadImage.swift"; sourceTree = "<group>"; };
+		6D0B50612A9A8A4700973168 /* UIImageView+downloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+downloadImage.swift"; sourceTree = "<group>"; };
+		6D0B50632A9A921B00973168 /* UIImageView+roundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+roundImage.swift"; sourceTree = "<group>"; };
 		6D0F09162A988CBE005A7117 /* UIView+roundCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+roundCorner.swift"; sourceTree = "<group>"; };
 		6D23A7B42A98C6860007C061 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 		6D23A7B62A98C6910007C061 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				6DA290FC2A98AEF30081AC44 /* Extensions */,
 				6DA290F82A98AE980081AC44 /* Resources */,
 				6DA290F92A98AEBA0081AC44 /* Controllers */,
+				6DA290FA2A98AED80081AC44 /* Views */,
 				6D23A7B32A98C6560007C061 /* Logger */,
 			);
 			path = ConCurrency;
@@ -172,7 +175,6 @@
 				6D06B5602A987387004C0F51 /* CurrencyConvertVC.swift */,
 				6D06B5622A98739A004C0F51 /* CurrencyCompareVC.swift */,
 				6DC19BD12A99E5FD0058E0F7 /* FavoriteListVC.swift */,
-				6DA290FA2A98AED80081AC44 /* Views */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -201,7 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				6D0F09162A988CBE005A7117 /* UIView+roundCorner.swift */,
-				6D0B50612A9A8A4700973168 /* UIImage+downloadImage.swift */,
+				6D0B50612A9A8A4700973168 /* UIImageView+downloadImage.swift */,
+				6D0B50632A9A921B00973168 /* UIImageView+roundImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -388,9 +391,10 @@
 				6D23A7B92A98C6A20007C061 /* LogEngine.swift in Sources */,
 				6DA078D92A9A2A0D000729F5 /* PersistingError.swift in Sources */,
 				6D06B54A2A9861D7004C0F51 /* AppDelegate.swift in Sources */,
-				6D0B50622A9A8A4800973168 /* UIImage+downloadImage.swift in Sources */,
+				6D0B50622A9A8A4800973168 /* UIImageView+downloadImage.swift in Sources */,
 				6DD7BF0A2A9944A1003F791A /* ConvertCurrecnyService.swift in Sources */,
 				6D06B54C2A9861D7004C0F51 /* SceneDelegate.swift in Sources */,
+				6D0B50642A9A921B00973168 /* UIImageView+roundImage.swift in Sources */,
 				6DD7BEF02A992DD1003F791A /* NetworkingError.swift in Sources */,
 				6DC19BD02A99DECC0058E0F7 /* CurrencyExchangeRateService.swift in Sources */,
 				6D23A7BB2A98C6AA0007C061 /* LoggerManager.swift in Sources */,
