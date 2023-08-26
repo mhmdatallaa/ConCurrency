@@ -24,6 +24,18 @@ class CurrencyCompareVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        #warning("To remove")
+        let client = URLSessionClient()
+        let service = CurrencyExchangeRateService(client: client)
+        service.fetchCurrencyExchangeRate(baseCurrency: "ABC"){ result in
+            switch result {
+            case .success(let response):
+                LoggerManager.info(message: "\(response)")
+            case .failure(let error):
+                LoggerManager.error(message: "\(error.localizedDescription)")
+            }
+        }
 
         configureViewsApperance()
     }
