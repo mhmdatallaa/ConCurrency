@@ -215,18 +215,18 @@
 		6DD7BEF42A993408003F791A /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				6DD7BEF52A993429003F791A /* Movies */,
+				6DD7BEF52A993429003F791A /* Currencies */,
 			);
 			path = Data;
 			sourceTree = "<group>";
 		};
-		6DD7BEF52A993429003F791A /* Movies */ = {
+		6DD7BEF52A993429003F791A /* Currencies */ = {
 			isa = PBXGroup;
 			children = (
 				6DD7BEF62A993432003F791A /* Requests */,
 				6DD7BEF72A99343D003F791A /* Responses */,
 			);
-			path = Movies;
+			path = Currencies;
 			sourceTree = "<group>";
 		};
 		6DD7BEF62A993432003F791A /* Requests */ = {
