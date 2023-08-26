@@ -29,9 +29,10 @@ class FavoriteCell: UITableViewCell {
     func setImage(for currency: String) {
         checkMarkImage.image = UIImage(systemName: currency)
     }
-    func configureCellViews(name: String) {
+    func configureCellViews(name: String, imageURL: String) {
         currencyCodeLabel.text = name
-        
+        favoriteFlagImage.roundCorner()
+        favoriteFlagImage.download(from: imageURL)
     }
     
 }

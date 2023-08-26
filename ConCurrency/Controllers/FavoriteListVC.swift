@@ -58,7 +58,7 @@ extension FavoriteListVC: UITableViewDataSource {
             return UITableViewCell()
         }
         let currency = currencies[indexPath.row]
-        cell.configureCellViews(name: currency.name)
+        cell.configureCellViews(name: currency.name, imageURL: currency.flagURL)
         cell.selectionStyle = .none
         PersistenceManager.retrieveFavorites { result in
             switch result {
