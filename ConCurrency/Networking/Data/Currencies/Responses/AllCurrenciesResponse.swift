@@ -16,8 +16,14 @@ struct AllCurrenciesResponse: Decodable {
 
 // MARK: - Currency
 
-struct Currency: Decodable {
+struct Currency: Codable, Equatable {
     let name: String
     let currencyCode: String
     let flagURL: String
+    
+    enum CodingKeys: String, CodingKey {
+        case currencyCode
+        case flagURL = "flagUrl"
+        case name
+    }
 }

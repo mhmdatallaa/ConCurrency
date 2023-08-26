@@ -8,7 +8,9 @@
 import Foundation
 
 struct CurrencyListRequest: NetworkingRequest {
-    var path: String { NetworkingConstants.allCurrencies }
+    // TODO: update with the right path
+    var path: String { "allCurrency.json" }
+//    var path: String { NetworkingConstants.allCurrencies }
     var headers: [String : String] = [:]
     var queryItems: [URLQueryItem]? = nil
 }
