@@ -7,6 +7,14 @@
 
 import UIKit
 
+enum ActionType {
+    case add, remove
+}
+
+protocol CurrencyFavoriting: AnyObject {
+    func favorite(currency: Currency, actionType: ActionType)
+}
+
 
 class FavoriteListVC: UIViewController {
     
@@ -16,8 +24,8 @@ class FavoriteListVC: UIViewController {
     
     // MARK: Properties
     
+    weak var delegate: CurrencyFavoriting?
     var currencies: [Currency] = []
-//    let currencies = AllCurrenciesMock.getAllCurrencies()
     var indexPath: IndexPath!
     
     // MARK: Life cycle
@@ -88,35 +96,31 @@ extension FavoriteListVC: UITableViewDelegate {
             PersistenceManager.updateWith(favorite: currencies[indexPath.row], actionType: .remove) { _ in
                 print("Errrrrrror")
             }
+            delegate?.favorite(currency: currency, actionType: .remove)
+
             cell?.checkMarkImage.image = UIImage(systemName: "circle")
             return
         }
         print(currency)
         PersistenceManager.updateWith(favorite: currency, actionType: .add) { error in
             if let error {
-                cell?.checkMarkImage.image = UIImage(systemName: "circle")
                 LoggerManager.error(message: error.localizedDescription)
             } else {
                 cell?.checkMarkImage.image = UIImage(systemName: "checkmark.circle.fill")
             }
+
         }
+        delegate?.favorite(currency: currency, actionType: .add)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = self.tableView.cellForRow(at: indexPath) as? FavoriteCell
+        let currency = currencies[indexPath.row]
         cell?.checkMarkImage.image = UIImage(systemName: "circle")
         PersistenceManager.updateWith(favorite: currencies[indexPath.row], actionType: .remove) { _ in
+            
             print("Errrrrrror")
         }
-    }
-}
-
-struct AllCurrenciesMock {
-    static func getAllCurrencies() -> [Currency] {
-        [
-            Currency(name: "USD Dollar", currencyCode: "USD", flagURL: "https://flagcdn.com/32x24/us.png"),
-            Currency(name: "Japan Yen", currencyCode: "JPY", flagURL:  "https://flagcdn.com/32x24/jp.png"),
-            Currency(name: "Oman Riyal", currencyCode: "OMR", flagURL: "https://flagcdn.com/32x24/om.png")
-        ]
+        delegate?.favorite(currency: currency, actionType: .remove)
     }
 }
