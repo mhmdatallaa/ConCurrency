@@ -101,7 +101,7 @@ extension FavoriteListVC: UITableViewDelegate {
         }
         print(currency)
         PersistenceManager.updateWith(favorite: currency, actionType: .add) { error in
-            if let error {
+            if let error = error {
                 LoggerManager.error(message: error.localizedDescription)
             } else {
                 cell?.checkMarkImage.image = UIImage(systemName: "checkmark.circle.fill")
