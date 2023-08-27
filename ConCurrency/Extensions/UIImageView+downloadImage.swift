@@ -11,13 +11,13 @@ extension UIImageView {
     private func downloaded(from url: URL) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let response = response as? HTTPURLResponse, response.statusCode == 200,
-                  let data, error == nil,
+                  let data = data, error == nil,
                   let image = UIImage(data: data) else {
                 LoggerManager.error(message: "Couldn't download image")
                 return
             }
             DispatchQueue.main.async { [weak self] in
-                guard let self else { return }
+                guard let self = self else { return }
                 self.image = image
             }
         }
