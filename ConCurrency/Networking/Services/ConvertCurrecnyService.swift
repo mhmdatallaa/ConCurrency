@@ -20,7 +20,8 @@ struct ConvertCurrencyService: ConvertCurrecnyServicing {
     }
     
     func fetchConvertCurrency(baseCurrency: String, targetCurrency: String, amount: String, completion: @escaping (Result<ConvertCurrencyResponse, Error>) -> ()) {
-        let request = ConvertCurrencyRequest(path: "\(NetworkingConstants.currencyConversion)/\(baseCurrency)/\(targetCurrency)/\(amount)").buildURLRequest()
+//        let request = ConvertCurrencyRequest(path: "\(NetworkingConstants.currencyConversion)/\(baseCurrency)/\(targetCurrency)/\(amount)").buildURLRequest()
+        let request = ConvertCurrencyRequest(path: "convert.json").buildURLRequest()
         
         LoggerManager.info(message: "\(String(describing: request.url))")
         

@@ -20,7 +20,7 @@ class CurrencyHandlerVC: UIViewController {
     @IBOutlet weak var segmentedView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("handler")
         setConvertView()
     }
     
