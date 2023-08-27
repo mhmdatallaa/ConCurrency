@@ -42,7 +42,5 @@ struct CompareCurrencyService: CompareCurrecnyServicing {
                 response = .failure(error)
             }
         }
-        
-        
     }
 }

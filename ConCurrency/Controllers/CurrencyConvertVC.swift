@@ -13,24 +13,28 @@ class CurrencyConvertVC: UIViewController {
     // MARK: IBOutlet
     
     @IBOutlet weak private(set) var amountTextFiled: UITextField!
-    @IBOutlet weak private(set) var fromDropDown: DropDown!
+    @IBOutlet weak  var fromDropDown: DropDown!
     @IBOutlet weak private(set) var toDropDown: DropDown!
     @IBOutlet weak private(set) var resultAmountLabel: CCLabel!
     @IBOutlet weak private(set) var convertButton: UIButton!
     @IBOutlet weak private(set) var addToFavoriteButton: UIButton!
     @IBOutlet weak private(set) var tableView: UITableView!
     
-    // MARK: Life cycle
+    // MARK: Properties
     
-    var currencies: [Currency] = []
+    var FavoriteCurrencies: [Currency] = []
+    var allCurrencies: [Currency] = []
     let favoriteListVC = FavoriteListVC()
+    var convertService: ConvertCurrecnyServicing!
+    var currencyListService: CurreciesListServicing!
+    var exchangeRateService: CurrencyExchangeRateServicing!
+    
     
     // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        print("Convert")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ProtofolioCell", bundle: nil), forCellReuseIdentifier: "ProtofolioCell")
@@ -40,20 +44,114 @@ class CurrencyConvertVC: UIViewController {
         PersistenceManager.retrieveFavorites { result in
             switch result {
             case .success(let currencies):
-                self.currencies = currencies
+                self.FavoriteCurrencies = currencies
             case .failure(let error):
                 LoggerManager.error(message: error.localizedDescription)
             }
         }
+        fetchAllCurrencies()
+
         configureViewsApperance()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("appear")
+
+//        configureFromDropDown()
+        
+        getFlagEmoji(flag: "USD")
     }
     
     // MARK: Methods
+    
+    private func fetchAllCurrencies() {
+        NetworkingManager.shared.fetchAllCurrencies { result in
+            switch result {
+            case .success(let currencies):
+                self.allCurrencies = currencies.data
+                self.configureFromDropDown()
+                self.configureToDropDown()
+            case .failure(let error):
+                LoggerManager.error(message: error.localizedDescription)
+            }
+        }
+    }
+    
+    private func configureFromDropDown() {
+//        fromDropDown.optionArray = allCurrencies.map {$0.currencyCode}
+        //Its Id Values and its optional
+//        fromDropDown.optionIds = [1,23,54,22]
+
+        // Image Array its optional
+        let emojis: [String] = allCurrencies.map {
+            let code = $0.currencyCode.dropLast()
+            let base: UInt32 = 127397
+            var emoji = ""
+            for scalar in code.unicodeScalars {
+                emoji.append(String(UnicodeScalar(base + scalar.value)!))
+            }
+            let text = emoji + " \($0.currencyCode)"
+            let s = UIFont(name: "", size: 20)
+            return text
+        }
+        fromDropDown.optionArray = emojis
+
+//        print(emojis)
+//        fromDropDown.optionImageArray = emojis
+        
+        // The the Closure returns Selected Index and String
+        fromDropDown.didSelect{(selectedText , index ,id) in
+            print(selectedText, index)
+//        self.valueLabel.text = "Selected String: \(selectedText) \n index: \(index)"
+        }
+    }
+    
+    private func configureToDropDown() {
+//        fromDropDown.optionArray = allCurrencies.map {$0.currencyCode}
+        //Its Id Values and its optional
+//        fromDropDown.optionIds = [1,23,54,22]
+
+        // Image Array its optional
+        let emojis: [String] = allCurrencies.map {
+            let code = $0.currencyCode.dropLast()
+            let base: UInt32 = 127397
+            var emoji = ""
+            for scalar in code.unicodeScalars {
+                emoji.append(String(UnicodeScalar(base + scalar.value)!))
+            }
+            let text = emoji + " \($0.currencyCode)"
+            let s = UIFont(name: "", size: 20)
+            return text
+        }
+        toDropDown.optionArray = emojis
+
+//        print(emojis)
+//        fromDropDown.optionImageArray = emojis
+        
+        // The the Closure returns Selected Index and String
+        toDropDown.didSelect{(selectedText , index ,id) in
+            print(selectedText, index)
+//        self.valueLabel.text = "Selected String: \(selectedText) \n index: \(index)"
+        }
+    }
+    
+    private func getFlagEmoji(flag: String) -> String {
+        let code = flag.dropLast()
+        let base: UInt32 = 127397
+        var emoji = ""
+        for scalar in code.unicodeScalars {
+            emoji.append(String(UnicodeScalar(base + scalar.value)!))
+        }
+        print(emoji)
+        return emoji
+    }
+    
+    private func convert(amount: String, from baseCurrency: String, to targetCurrency: String) {
+        NetworkingManager.shared.fetchConvertCurrency(baseCurrency: baseCurrency, targetCurrency: targetCurrency, amount: amount) { result in
+            switch result {
+            case .success(let response):
+                self.resultAmountLabel.text = response.data.conversionResult
+            case .failure(let error):
+                LoggerManager.error(message: error.localizedDescription)
+            }
+        }
+    }
     
     private func configureViewsApperance() {
         fromDropDown.roundCorner()
@@ -63,11 +161,13 @@ class CurrencyConvertVC: UIViewController {
         addToFavoriteButton.roundCorner()
         addToFavoriteButton.layer.borderWidth = 1
     }
+    
 
     // MARK: Actions
     
     @IBAction private func convertButtonTapped(_ sender: Any) {
         print("Convert")
+        convert(amount: amountTextFiled.text!, from: "JPY", to: "KWD")
 
     }
     
@@ -76,6 +176,7 @@ class CurrencyConvertVC: UIViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "FavoriteListVC") as! FavoriteListVC
         vc.delegate = self
+        vc.currencyListService = currencyListService
         present(vc, animated: true)
     }
     
@@ -85,7 +186,7 @@ class CurrencyConvertVC: UIViewController {
 
 extension CurrencyConvertVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        currencies.count
+        FavoriteCurrencies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,7 +194,7 @@ extension CurrencyConvertVC: UITableViewDataSource {
             LoggerManager.error(message: "Couldn't cast Favorite cell")
             return UITableViewCell()
         }
-        let currency = currencies[indexPath.row]
+        let currency = FavoriteCurrencies[indexPath.row]
         cell.configureCellViews(name: currency.name, imageURL: currency.flagURL)
         return cell
     }
@@ -111,10 +212,13 @@ extension CurrencyConvertVC: CurrencyFavoriting {
     func favorite(currency: Currency, actionType: ActionType) {
         switch actionType {
         case .add:
-            currencies.append(currency)
+            FavoriteCurrencies.append(currency)
         case .remove:
-            currencies.removeAll {$0.currencyCode == currency.currencyCode}
+            FavoriteCurrencies.removeAll {$0.currencyCode == currency.currencyCode}
         }
         tableView.reloadData()
     }
+}
+
+extension CurrencyConvertVC: UITextFieldDelegate {
 }

@@ -17,6 +17,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+//
+//        let client = URLSessionClient()
+//
+//        let convertService: ConvertCurrecnyServicing = ConvertCurrencyService(client: client)
+//        let currencyListService: CurreciesListServicing = CurrenciesListService(client: client)
+//        let exchangeRateService: CurrencyExchangeRateServicing = CurrencyExchangeRateService(client: client)
+//        let compareService: CompareCurrecnyServicing! = CompareCurrencyService(client: client)
+//
+//        let ConvertVC = CurrencyConvertVC()
+//        let compareVC = CurrencyCompareVC()
+//
+//        ConvertVC.convertService = convertService
+//        ConvertVC.currencyListService = currencyListService
+//        ConvertVC.exchangeRateService = exchangeRateService
+//        compareVC.compareService = compareService
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

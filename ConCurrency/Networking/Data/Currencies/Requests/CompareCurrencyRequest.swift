@@ -8,7 +8,7 @@
 import Foundation
 
 struct CompareCurrencyRequest: NetworkingRequest {
-    var path: String = NetworkingConstants.currencyCompare
+    var path: String = "compare.json"
     var method: HTTPMethod = .POST
     var body: Data?
     var headers: [String : String] = [:]

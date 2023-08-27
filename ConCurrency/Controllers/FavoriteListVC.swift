@@ -18,8 +18,7 @@ protocol CurrencyFavoriting: AnyObject {
 
 class FavoriteListVC: UIViewController {
     
-    // MARK: IBOutlets
-    
+    // MARK: IBOutlets    
     @IBOutlet weak private(set) var tableView: UITableView!
     
     // MARK: Properties
@@ -27,6 +26,7 @@ class FavoriteListVC: UIViewController {
     weak var delegate: CurrencyFavoriting?
     var currencies: [Currency] = []
     var indexPath: IndexPath!
+    var currencyListService: CurreciesListServicing!
     
     // MARK: Life cycle
     
@@ -36,9 +36,7 @@ class FavoriteListVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        let client = URLSessionClient()
-        let service = CurrenciesListService(client: client)
-        service.fetchAllCurrencies { result in
+        NetworkingManager.shared.fetchAllCurrencies { result in
             switch result {
             case .success(let currencies):
                 self.currencies = currencies.data
