@@ -25,6 +25,8 @@
 		6D23A7B92A98C6A20007C061 /* LogEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23A7B82A98C6A20007C061 /* LogEngine.swift */; };
 		6D23A7BB2A98C6AA0007C061 /* LoggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23A7BA2A98C6AA0007C061 /* LoggerManager.swift */; };
 		6D3A247F2A99CE9300941039 /* CompareCurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A247E2A99CE9300941039 /* CompareCurrencyService.swift */; };
+		6D7FA3E62A9A97B3009D9CFF /* ProtofolioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7FA3E42A9A97B3009D9CFF /* ProtofolioCell.swift */; };
+		6D7FA3E72A9A97B3009D9CFF /* ProtofolioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D7FA3E52A9A97B3009D9CFF /* ProtofolioCell.xib */; };
 		6DA078D72A9A291A000729F5 /* PersistingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA078D62A9A291A000729F5 /* PersistingManager.swift */; };
 		6DA078D92A9A2A0D000729F5 /* PersistingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA078D82A9A2A0D000729F5 /* PersistingError.swift */; };
 		6DA64DD62A9894EB0002ABDB /* CCSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA64DD52A9894EB0002ABDB /* CCSegmentedControl.swift */; };
@@ -70,6 +72,8 @@
 		6D23A7B82A98C6A20007C061 /* LogEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEngine.swift; sourceTree = "<group>"; };
 		6D23A7BA2A98C6AA0007C061 /* LoggerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerManager.swift; sourceTree = "<group>"; };
 		6D3A247E2A99CE9300941039 /* CompareCurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCurrencyService.swift; sourceTree = "<group>"; };
+		6D7FA3E42A9A97B3009D9CFF /* ProtofolioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtofolioCell.swift; sourceTree = "<group>"; };
+		6D7FA3E52A9A97B3009D9CFF /* ProtofolioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProtofolioCell.xib; sourceTree = "<group>"; };
 		6DA078D62A9A291A000729F5 /* PersistingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistingManager.swift; sourceTree = "<group>"; };
 		6DA078D82A9A2A0D000729F5 /* PersistingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistingError.swift; sourceTree = "<group>"; };
 		6DA64DD52A9894EB0002ABDB /* CCSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCSegmentedControl.swift; sourceTree = "<group>"; };
@@ -137,6 +141,15 @@
 				6D23A7B32A98C6560007C061 /* Logger */,
 			);
 			path = ConCurrency;
+			sourceTree = "<group>";
+		};
+		6D0B50692A9A950300973168 /* ProtofolioCell */ = {
+			isa = PBXGroup;
+			children = (
+				6D7FA3E42A9A97B3009D9CFF /* ProtofolioCell.swift */,
+				6D7FA3E52A9A97B3009D9CFF /* ProtofolioCell.xib */,
+			);
+			path = ProtofolioCell;
 			sourceTree = "<group>";
 		};
 		6D23A7B32A98C6560007C061 /* Logger */ = {
@@ -212,6 +225,7 @@
 		6DC19BD72A99E69A0058E0F7 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6D0B50692A9A950300973168 /* ProtofolioCell */,
 				6DC19BD82A99E6A50058E0F7 /* FavoriteCell */,
 			);
 			path = Cells;
@@ -373,6 +387,7 @@
 			files = (
 				6D06B5562A9861D9004C0F51 /* LaunchScreen.storyboard in Resources */,
 				6DD1E9532A99F07100FB1050 /* FavoriteCell.xib in Resources */,
+				6D7FA3E72A9A97B3009D9CFF /* ProtofolioCell.xib in Resources */,
 				6D06B5532A9861D9004C0F51 /* Assets.xcassets in Resources */,
 				6D06B5512A9861D7004C0F51 /* Main.storyboard in Resources */,
 			);
@@ -417,6 +432,7 @@
 				6DD7BF032A993A20003F791A /* ConvertCurrencyResponse.swift in Sources */,
 				6DA64DD62A9894EB0002ABDB /* CCSegmentedControl.swift in Sources */,
 				6D23A7B52A98C6860007C061 /* LogLevel.swift in Sources */,
+				6D7FA3E62A9A97B3009D9CFF /* ProtofolioCell.swift in Sources */,
 				6DC19BCE2A99DBD30058E0F7 /* CurrencyListService.swift in Sources */,
 				6DD7BF052A993A65003F791A /* CompareCurrencyResponse.swift in Sources */,
 				6DD7BEFD2A99363A003F791A /* CompareCurrencyRequest.swift in Sources */,
