@@ -116,6 +116,14 @@ extension FavoriteListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = self.tableView.cellForRow(at: indexPath) as? FavoriteCell
         let currency = currencies[indexPath.row]
+        if cell?.checkMarkImage.image == UIImage(systemName: "circle") {
+            PersistenceManager.updateWith(favorite: currencies[indexPath.row], actionType: .add) { _ in
+                print("Errrrrrror")
+            }
+            delegate?.favorite(currency: currency, actionType: .add)
+            cell?.checkMarkImage.image = UIImage(systemName: "checkmark.circle.fill")
+            return
+        }
         cell?.checkMarkImage.image = UIImage(systemName: "circle")
         PersistenceManager.updateWith(favorite: currencies[indexPath.row], actionType: .remove) { _ in
             
