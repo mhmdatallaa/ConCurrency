@@ -28,20 +28,6 @@ class CurrencyCompareVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Compare")
-        
-        #warning("To remove")
-        let client = URLSessionClient()
-        let service = CurrencyExchangeRateService(client: client)
-        service.fetchCurrencyExchangeRate(baseCurrency: "ABC"){ result in
-            switch result {
-            case .success(let response):
-                LoggerManager.info(message: "\(response)")
-            case .failure(let error):
-                LoggerManager.error(message: "\(error.localizedDescription)")
-            }
-        }
-
         configureViewsApperance()
         fetchAllCurrencies()
     }
@@ -59,7 +45,7 @@ class CurrencyCompareVC: UIViewController {
             switch result {
             case .success(let currencies):
                 self.allCurrencies = currencies.data
-                self.configureFromDropDown()
+                self.configrueDropDown()
             case .failure(let error):
                 LoggerManager.error(message: error.localizedDescription)
             }
@@ -77,44 +63,25 @@ class CurrencyCompareVC: UIViewController {
             }
         }
     }
-    
-    private func configureFromDropDown() {
-//        fromDropDown.optionArray = allCurrencies.map {$0.currencyCode}
-        //Its Id Values and its optional
-//        fromDropDown.optionIds = [1,23,54,22]
-
-        // Image Array its optional
-        let emojis: [String] = allCurrencies.map {
-            let code = $0.currencyCode.dropLast()
-            let base: UInt32 = 127397
-            var emoji = ""
-            for scalar in code.unicodeScalars {
-                emoji.append(String(UnicodeScalar(base + scalar.value)!))
+    private func configrueDropDown() {
+        let emojis: [String] = allCurrencies.map { $0.currencyCode.intoEmoji() + " \($0.currencyCode)" }
+        let dropDowns: [DropDown] = [fromDropDown, targeted1DropDown, targeted2DropDown]
+        for dropDown in dropDowns {
+            dropDown.optionArray = emojis
+    //        toDropDown.selectedIndex = 1
+            dropDown.didSelect{(selectedText , index ,id) in
+                print(selectedText, index)
             }
-            let text = emoji + " \($0.currencyCode)"
-            let s = UIFont(name: "", size: 20)
-            return text
-        }
-        fromDropDown.optionArray = emojis
-
-//        print(emojis)
-//        fromDropDown.optionImageArray = emojis
-        
-        // The the Closure returns Selected Index and String
-        fromDropDown.didSelect{(selectedText , index ,id) in
-            print(selectedText, index)
-//        self.valueLabel.text = "Selected String: \(selectedText) \n index: \(index)"
         }
     }
-
-    
     
     // MARK: Actions
 
     @IBAction private func compareButtonTapped(_ sender: Any) {
         print("compare")
-        compare(baseCurrency: "", firstTarget: "", secondTarget: "", amount: 200.5)
+        compare(baseCurrency: "AED", firstTarget: "EGP", secondTarget: "USD", amount: 200.5)
     }
     
     
 }
+

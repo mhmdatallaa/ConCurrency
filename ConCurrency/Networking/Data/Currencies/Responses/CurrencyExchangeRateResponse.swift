@@ -17,11 +17,11 @@ struct CurrencyExchangeRateResponse: Decodable {
 // MARK: - ExchageRateData
 
 struct ExchageRateData: Codable {
-    let baseCode: String
+//    let baseCode: String
     let conversionRates: [String: Double]
 
     enum CodingKeys: String, CodingKey {
-        case baseCode = "base_code"
+//        case baseCode = "base_code"
         case conversionRates = "conversion_rates"
     }
 }

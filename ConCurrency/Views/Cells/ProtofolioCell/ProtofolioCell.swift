@@ -24,8 +24,8 @@ class ProtofolioCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCellViews(name: String, imageURL: String) {
-        currencyNameLabel.text = name
+    func configureCellViews(currencyName: String, imageURL: String) {
+        currencyNameLabel.text = currencyName
         flagImage.roundCorner()
         flagImage.download(from: imageURL)
     }

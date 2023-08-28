@@ -8,11 +8,12 @@
 import Foundation
 
 enum NetworkingConstants {
-    static let baseURL = "https://allcurrency-5081e-default-rtdb.firebaseio.com/"
+    static let baseURL = "https://bmgraduationproject-production.up.railway.app/api/v1/"
     static let flagBaseURL = ""
-    static let currencyConversion = "https://currencies-conversion/currency-conversion/"
+    // "currencies-conversion/currency-conversion/JPY/KWD/12.3"
+    static let currencyConversion = "currencies-conversion/currency-conversion/"
     static let allCurrencies = "currencies-info/currencies"
-    static let currencyExchangeRate = "exchange-rate/currency-exchange-rate/"
-    static let currencyCompare = "https://currencies-conversion/"
+    static let currencyExchangeRate = "exchange-rate/currency-exchangeRate/"
+    static let currencyCompare = "currencies-compare-rate/currencies-compare"
     
 }

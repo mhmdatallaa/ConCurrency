@@ -19,7 +19,7 @@ struct CurrencyExchangeRateService: CurrencyExchangeRateServicing {
     }
     
     func fetchCurrencyExchangeRate(baseCurrency: String, completion: @escaping (Result<CurrencyExchangeRateResponse, Error>) -> Void) {
-        let request = CurrencyExchangeRateRequest(path: "\(NetworkingConstants.currencyExchangeRate)/\(baseCurrency)").buildURLRequest()
+        let request = CurrencyExchangeRateRequest(path: "\(NetworkingConstants.currencyExchangeRate)\(baseCurrency)").buildURLRequest()
         
         LoggerManager.info(message: "\(String(describing: request.url))")
         

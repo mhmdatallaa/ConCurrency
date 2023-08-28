@@ -25,6 +25,8 @@
 		6D23A7B92A98C6A20007C061 /* LogEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23A7B82A98C6A20007C061 /* LogEngine.swift */; };
 		6D23A7BB2A98C6AA0007C061 /* LoggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23A7BA2A98C6AA0007C061 /* LoggerManager.swift */; };
 		6D3A247F2A99CE9300941039 /* CompareCurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A247E2A99CE9300941039 /* CompareCurrencyService.swift */; };
+		6D3B91BE2A9BE62F000B1CC2 /* FavoriteListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3B91BD2A9BE62F000B1CC2 /* FavoriteListPresenter.swift */; };
+		6D3B91C02A9BF2E0000B1CC2 /* String+intoEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3B91BF2A9BF2E0000B1CC2 /* String+intoEmoji.swift */; };
 		6D7FA3E62A9A97B3009D9CFF /* ProtofolioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7FA3E42A9A97B3009D9CFF /* ProtofolioCell.swift */; };
 		6D7FA3E72A9A97B3009D9CFF /* ProtofolioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D7FA3E52A9A97B3009D9CFF /* ProtofolioCell.xib */; };
 		6D97A2802A9BB4D800AD2763 /* DropDown+configureAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D97A27F2A9BB4D800AD2763 /* DropDown+configureAppearance.swift */; };
@@ -74,6 +76,8 @@
 		6D23A7B82A98C6A20007C061 /* LogEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEngine.swift; sourceTree = "<group>"; };
 		6D23A7BA2A98C6AA0007C061 /* LoggerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerManager.swift; sourceTree = "<group>"; };
 		6D3A247E2A99CE9300941039 /* CompareCurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCurrencyService.swift; sourceTree = "<group>"; };
+		6D3B91BD2A9BE62F000B1CC2 /* FavoriteListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListPresenter.swift; sourceTree = "<group>"; };
+		6D3B91BF2A9BF2E0000B1CC2 /* String+intoEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+intoEmoji.swift"; sourceTree = "<group>"; };
 		6D7FA3E42A9A97B3009D9CFF /* ProtofolioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtofolioCell.swift; sourceTree = "<group>"; };
 		6D7FA3E52A9A97B3009D9CFF /* ProtofolioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProtofolioCell.xib; sourceTree = "<group>"; };
 		6D97A27F2A9BB4D800AD2763 /* DropDown+configureAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DropDown+configureAppearance.swift"; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 				6D06B5602A987387004C0F51 /* CurrencyConvertVC.swift */,
 				6D06B5622A98739A004C0F51 /* CurrencyCompareVC.swift */,
 				6DC19BD12A99E5FD0058E0F7 /* FavoriteListVC.swift */,
+				6D3B91BD2A9BE62F000B1CC2 /* FavoriteListPresenter.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 				6D0B50612A9A8A4700973168 /* UIImageView+downloadImage.swift */,
 				6D0B50632A9A921B00973168 /* UIImageView+roundImage.swift */,
 				6D97A27F2A9BB4D800AD2763 /* DropDown+configureAppearance.swift */,
+				6D3B91BF2A9BF2E0000B1CC2 /* String+intoEmoji.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -408,6 +414,7 @@
 			files = (
 				6D97A2802A9BB4D800AD2763 /* DropDown+configureAppearance.swift in Sources */,
 				6DEA81772A9B743F0028F8A1 /* CurrenciesStore.swift in Sources */,
+				6D3B91C02A9BF2E0000B1CC2 /* String+intoEmoji.swift in Sources */,
 				6D06B54E2A9861D7004C0F51 /* CurrencyHandlerVC.swift in Sources */,
 				6D23A7B72A98C6910007C061 /* Logging.swift in Sources */,
 				6D3A247F2A99CE9300941039 /* CompareCurrencyService.swift in Sources */,
@@ -424,6 +431,7 @@
 				6DD7BEF32A992F08003F791A /* URLSessionClient.swift in Sources */,
 				6DA078D72A9A291A000729F5 /* PersistingManager.swift in Sources */,
 				6D06B5612A987387004C0F51 /* CurrencyConvertVC.swift in Sources */,
+				6D3B91BE2A9BE62F000B1CC2 /* FavoriteListPresenter.swift in Sources */,
 				6DD7BF012A99395D003F791A /* AllCurrenciesResponse.swift in Sources */,
 				6DD1E9522A99F07100FB1050 /* FavoriteCell.swift in Sources */,
 				6DD7BF072A993D5D003F791A /* CurrencyExchangeRateResponse.swift in Sources */,

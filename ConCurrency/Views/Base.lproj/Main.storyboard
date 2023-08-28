@@ -136,7 +136,7 @@
                                                                     <constraint firstAttribute="height" constant="48" id="84y-Fx-KVJ"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -149,7 +149,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="USD" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FNx-XM-bUf" customClass="JRDropDown">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="🇺🇸 USD" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FNx-XM-bUf" customClass="JRDropDown">
                                                                 <rect key="frame" x="0.0" y="28.333333333333329" width="248.66666666666666" height="48"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -198,7 +198,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="USD" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TRM-Fm-18x" customClass="JRDropDown">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="select...." borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TRM-Fm-18x" customClass="JRDropDown">
                                                                 <rect key="frame" x="0.0" y="28.333333333333314" width="249" height="48"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                                 <textInputTraits key="textInputTraits"/>
@@ -412,7 +412,7 @@
                                                     <constraint firstAttribute="height" constant="48" id="RFa-JU-QUl"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -425,7 +425,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="EGP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mVN-OY-q1r" customClass="JRDropDown">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="select..." borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mVN-OY-q1r" customClass="JRDropDown">
                                                 <rect key="frame" x="0.0" y="33.333333333333343" width="168" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -464,7 +464,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="USD" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ep3-XB-SCj" customClass="JRDropDown">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="select..." borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ep3-XB-SCj" customClass="JRDropDown">
                                                 <rect key="frame" x="0.0" y="28.666666666666657" width="168" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="WZS-dO-3bY"/>
@@ -510,7 +510,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="USD" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pyw-1n-iLe" customClass="JRDropDown">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="select..." borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pyw-1n-iLe" customClass="JRDropDown">
                                                 <rect key="frame" x="0.0" y="28.666666666666657" width="168" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
