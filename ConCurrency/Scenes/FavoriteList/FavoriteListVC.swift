@@ -53,11 +53,6 @@ class FavoriteListVC: UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction func dismissButtonTapped(_ sender: Any) {
-        dismiss(animated: true)
-    }
-    
-    // MARK: Methods
     
     @IBAction private func dismissButtonTapped(_ sender: Any) {
         dismiss(animated: true)
