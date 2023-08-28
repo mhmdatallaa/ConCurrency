@@ -11,17 +11,17 @@ import Foundation
 
 struct CurrencyExchangeRateResponse: Decodable {
     let status: String
-    let data: ExchageRateData
+    let data: [ExchageRate]
 }
 
 // MARK: - ExchageRateData
 
-struct ExchageRateData: Codable {
-//    let baseCode: String
-    let conversionRates: [String: Double]
-
-    enum CodingKeys: String, CodingKey {
-//        case baseCode = "base_code"
-        case conversionRates = "conversion_rates"
-    }
+struct ExchageRate: Codable {
+    let code: String
+    let rate: Double
+//
+//    enum CodingKeys: String, CodingKey {
+////        case baseCode = "base_code"
+//        case conversionRates = "conversion_rates"
+//    }
 }
