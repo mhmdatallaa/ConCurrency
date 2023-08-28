@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +35,7 @@
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="d6d-AO-AUf" customClass="CCSegmentControl" customModule="ConCurrency" customModuleProvider="target">
                                 <rect key="frame" x="40" y="258.66666666666669" width="348" height="49"/>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="och-9c-L0w"/>
                                 </constraints>
@@ -363,28 +364,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IdL-nR-zZ1">
-                                <rect key="frame" x="0.0" y="47" width="428" height="845"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfa-EW-Ue4">
+                                <rect key="frame" x="16" y="141.33333333333331" width="396" height="629.33333333333348"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyFavorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNu-vB-E1r">
+                                        <rect key="frame" x="16" y="16" width="364" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IdL-nR-zZ1">
+                                        <rect key="frame" x="0.0" y="56" width="396" height="565.33333333333337"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstItem="xNu-vB-E1r" firstAttribute="top" secondItem="kfa-EW-Ue4" secondAttribute="top" constant="16" id="7Ko-Vc-xxh"/>
+                                    <constraint firstItem="xNu-vB-E1r" firstAttribute="leading" secondItem="kfa-EW-Ue4" secondAttribute="leading" constant="16" id="Bis-dc-VKm"/>
+                                    <constraint firstItem="IdL-nR-zZ1" firstAttribute="top" secondItem="xNu-vB-E1r" secondAttribute="bottom" constant="16" id="QrB-YA-XSX"/>
+                                    <constraint firstAttribute="trailing" secondItem="xNu-vB-E1r" secondAttribute="trailing" constant="16" id="SzN-v4-e42"/>
+                                    <constraint firstAttribute="bottom" secondItem="IdL-nR-zZ1" secondAttribute="bottom" constant="8" id="dvB-ix-8aH"/>
+                                    <constraint firstAttribute="trailing" secondItem="IdL-nR-zZ1" secondAttribute="trailing" id="edV-Y5-rZQ"/>
+                                    <constraint firstItem="IdL-nR-zZ1" firstAttribute="leading" secondItem="kfa-EW-Ue4" secondAttribute="leading" id="vwX-mK-7wb"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMg-B0-hxf">
+                                <rect key="frame" x="338" y="77" width="60" height="34.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2Gh-hu-biV"/>
+                                    <constraint firstAttribute="width" constant="60" id="eDC-aQ-OdC"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <buttonConfiguration key="configuration" style="plain" title="">
+                                    <imageReference key="image" image="xmark" catalog="system" symbolScale="medium"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="dismissButtonTapped:" destination="bCa-68-pU4" eventType="touchUpInside" id="bbV-8s-i3q"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Zxw-Oe-d26"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="IdL-nR-zZ1" firstAttribute="leading" secondItem="Zxw-Oe-d26" secondAttribute="leading" id="Rw7-OU-iBx"/>
-                            <constraint firstItem="IdL-nR-zZ1" firstAttribute="top" secondItem="Zxw-Oe-d26" secondAttribute="top" id="Ysj-ro-qs1"/>
-                            <constraint firstItem="Zxw-Oe-d26" firstAttribute="bottom" secondItem="IdL-nR-zZ1" secondAttribute="bottom" id="yrw-0Q-Vsu"/>
-                            <constraint firstItem="Zxw-Oe-d26" firstAttribute="trailing" secondItem="IdL-nR-zZ1" secondAttribute="trailing" id="z36-VG-fzh"/>
+                            <constraint firstItem="Zxw-Oe-d26" firstAttribute="trailing" secondItem="fMg-B0-hxf" secondAttribute="trailing" constant="30" id="7Vh-Zn-Hum"/>
+                            <constraint firstItem="kfa-EW-Ue4" firstAttribute="centerY" secondItem="Zxw-Oe-d26" secondAttribute="centerY" id="8Tn-IT-nn0"/>
+                            <constraint firstItem="kfa-EW-Ue4" firstAttribute="top" secondItem="fMg-B0-hxf" secondAttribute="bottom" constant="30" id="JEv-Mm-QiN"/>
+                            <constraint firstItem="Zxw-Oe-d26" firstAttribute="trailing" secondItem="kfa-EW-Ue4" secondAttribute="trailing" constant="16" id="R2U-si-SkD"/>
+                            <constraint firstItem="kfa-EW-Ue4" firstAttribute="height" secondItem="1Lh-Fi-1CM" secondAttribute="height" multiplier="0.7" id="gK5-tC-r7I"/>
+                            <constraint firstItem="kfa-EW-Ue4" firstAttribute="leading" secondItem="Zxw-Oe-d26" secondAttribute="leading" constant="16" id="gPz-es-fZO"/>
+                            <constraint firstItem="fMg-B0-hxf" firstAttribute="top" secondItem="Zxw-Oe-d26" secondAttribute="top" constant="30" id="u2T-6y-eNK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JeC-fI-CTW"/>
                     <connections>
+                        <outlet property="containerView" destination="kfa-EW-Ue4" id="6gw-7P-TuZ"/>
                         <outlet property="tableView" destination="IdL-nR-zZ1" id="U1G-XN-QFy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dAT-0f-aRU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1631" y="596"/>
+            <point key="canvasLocation" x="1630.3738317757009" y="595.46436285097195"/>
         </scene>
         <!--Currency CompareVC-->
         <scene sceneID="Fdn-U6-ZSJ">
@@ -594,14 +634,15 @@
     <resources>
         <image name="chart" width="6067" height="3467"/>
         <image name="plus.circle" catalog="system" width="128" height="123"/>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
