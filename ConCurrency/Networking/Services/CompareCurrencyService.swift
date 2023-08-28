@@ -19,16 +19,25 @@ struct CompareCurrencyService: CompareCurrecnyServicing {
     }
     
     func fetchCompareCurrency(baseCurrency: String, firstTarget: String, secondTarget: String, amount: Double, completion: @escaping (Result<CompareCurrencyResponse, Error>) -> ()) {
-        let bodyData = """
-        {
-            "baseCode": \(baseCurrency),
-            "firstTargetCode": \(firstTarget),
-            "secondTargetCode": \(secondTarget),
-            "amount": \(amount)
-        }
-        """.data(using: .utf8)
         
-        let request = CompareCurrencyRequest(body: bodyData).buildURLRequest()
+        // Create the request body
+        let requestBody = CurrencyConversionRequest(baseCode: baseCurrency, firstTargetCode: firstTarget, secondTargetCode: secondTarget, amount: amount)
+
+        // Encode the request body to JSON data
+        let jsonEncoder = JSONEncoder()
+        guard let jsonData = try? jsonEncoder.encode(requestBody) else {
+            print("Error encoding request body")
+            return
+        }
+        
+        let headers =
+        [
+            "Content-Type": "application/json",
+            "Accept": "*/*",
+            "Accept-Encoding": "gzip, deflate, br"
+        ]
+        
+        let request = CompareCurrencyRequest(body: jsonData, headers: headers).buildURLRequest()
         LoggerManager.info(message: "url: \(String(describing: request.url)) body: \(String(describing: request.httpBody))")
         
         client.perform(request) { (result: Result<CompareCurrencyResponse, Error>) in

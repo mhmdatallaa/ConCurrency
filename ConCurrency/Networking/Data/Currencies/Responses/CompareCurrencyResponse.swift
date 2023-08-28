@@ -16,7 +16,7 @@ struct CompareCurrencyResponse: Decodable {
 
 // MARK: - CompareData
 
-struct CompareData: Codable {
+struct CompareData: Decodable {
     let baseCode: String
     let conversionRates: ConversionRates
 
@@ -28,11 +28,6 @@ struct CompareData: Codable {
 
 // MARK: - ConversionRates
 
-struct ConversionRates: Codable {
+struct ConversionRates: Decodable {
     let firstTargetRate, secondTargetRate: Double
-
-    enum CodingKeys: String, CodingKey {
-        case firstTargetRate = "FirstTargetRate"
-        case secondTargetRate = "SecondTargetRate"
-    }
 }

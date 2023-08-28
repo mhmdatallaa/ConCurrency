@@ -9,7 +9,6 @@ import Foundation
 
 final class URLSessionClient: HTTPClient {
     func perform<T: Decodable>(_ urlRequest: URLRequest, completion: @escaping (Result<T, Error>) -> ()) {
-        LoggerManager.info(message: "\(urlRequest.url!)")
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             LoggerManager.info(message: "🌐 Request >>> \(urlRequest.url!.absoluteString)")
             let result: Result<T, Error>
@@ -22,6 +21,7 @@ final class URLSessionClient: HTTPClient {
             if let error {
                 LoggerManager.error(message: "\(error.localizedDescription)")
                 result = .failure(error)
+                print(error.localizedDescription)
                 return
             }
             
@@ -39,6 +39,7 @@ final class URLSessionClient: HTTPClient {
                     result = .failure(NetworkError.noData)
                     return
                 default:
+                    print(httpResponse.statusCode)
                     result = .failure(NetworkError.networkError)
                     return
                 }

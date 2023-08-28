@@ -21,24 +21,25 @@ protocol CurrencyFavoritingDelegate: AnyObject {
 
 // MARK: - FavoriteListVC
 
-class FavoriteListVC: UIViewController, BaseView {
+class FavoriteListVC: UIViewController {
     
     // MARK: Properties
     lazy var presenter = FavoriteListPresenter(view: self)
-    var currencies: [Currency] = []
-    var isFavorite: Bool = false
+    private var allCurrencies: [Currency] = []
+    private var favoriteCurrencies: [Currency] = []
     
     // MARK: IBOutlets    
     @IBOutlet weak private(set) var tableView: UITableView!
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak private(set) var containerView: UIView!
     
     // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        presenter.getFavoriteCurrencies()
+        presenter.fetchAllCurrencies()
         configureTableView()
-        fetchAllCurrencies()
         
     }
     
@@ -52,38 +53,34 @@ class FavoriteListVC: UIViewController, BaseView {
     }
     
     // MARK: - Actions
-    @IBAction func dismissButtonTapped(_ sender: Any) {
+    
+    @IBAction private func dismissButtonTapped(_ sender: Any) {
         dismiss(animated: true)
-    }
-    
-    // MARK: Methods
-    
-    private func fetchAllCurrencies() {
-        NetworkingManager.shared.fetchAllCurrencies { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case .success(let currencies):
-                self.currencies = currencies.data
-                self.tableView.reloadData()
-            case .failure(let error):
-                LoggerManager.error(message: error.localizedDescription)
-            }
-        }
-
     }
     
     
 }
 
+// MARK: - FavoriteListViewProtocol Extension
 
+extension FavoriteListVC: FavoriteListViewProtocol {
+    func getAllCurrencies(_ currencies: [Currency]) {
+        allCurrencies = currencies
+        tableView.reloadData()
+    }
+    
+    func markFavoriteCurrencies(_ currencies: [Currency]) {
+        favoriteCurrencies = currencies
+        tableView.reloadData()
+    }
+}
 
-
-// MARK: - Extensions
+// MARK: - UITableViewDataSource Extension
 
     extension FavoriteListVC: UITableViewDataSource {
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            print(currencies.count)
-            return currencies.count
+            print(allCurrencies.count)
+            return allCurrencies.count
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,36 +89,20 @@ class FavoriteListVC: UIViewController, BaseView {
                 return UITableViewCell()
             }
             
-            let currency = currencies[indexPath.row]
+            let currency = allCurrencies[indexPath.row]
             cell.configureCellViews(name: currency.name, imageURL: currency.flagURL)
             cell.selectionStyle = .none
-            
-            let favoriteCurrencies = retrieveFavoriteCurrencies()
             if let _ = favoriteCurrencies.firstIndex(of: currency) {
                 cell.setImage(for: "checkmark.circle.fill")
             }
             
             return cell
         }
-        
-        
-        
-        private func retrieveFavoriteCurrencies() -> [Currency] {
-            var currencies = [Currency]()
-            PersistenceManager.retrieveFavorites { result in
-                switch result {
-                case .success(let favoriteCurrencies):
-                    currencies = favoriteCurrencies
-                case .failure(let error):
-                    LoggerManager.error(message: error.localizedDescription)
-                }
-            }
-            
-            return currencies
-        }
     
     
 }
+
+// MARK: - UITableViewDelegate Extension
 
 extension FavoriteListVC: UITableViewDelegate {
     
@@ -130,11 +111,11 @@ extension FavoriteListVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = self.tableView.cellForRow(at: indexPath) as? FavoriteCell else {
+        guard let cell = tableView.cellForRow(at: indexPath) as? FavoriteCell else {
             LoggerManager.error(message: "Couldn't cast cell to FavoriteCell")
             return
         }
-        let currency = currencies[indexPath.row]
+        let currency = allCurrencies[indexPath.row]
         
         if cell.checkMarkImage.image == UIImage(systemName: "checkmark.circle.fill") {
             presenter.removeFromFavorite(currency)
@@ -147,14 +128,12 @@ extension FavoriteListVC: UITableViewDelegate {
         
     }
     
-    
-    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard let cell = self.tableView.cellForRow(at: indexPath) as? FavoriteCell else {
+        guard let cell = tableView.cellForRow(at: indexPath) as? FavoriteCell else {
             LoggerManager.error(message: "Couldn't cast cell to FavoriteCell")
             return
         }
-        let currency = currencies[indexPath.row]
+        let currency = allCurrencies[indexPath.row]
         
         if cell.checkMarkImage.image == UIImage(systemName: "circle") {
             presenter.addToFavorite(currency)
