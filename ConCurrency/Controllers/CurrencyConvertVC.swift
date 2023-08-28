@@ -155,7 +155,7 @@ class CurrencyConvertVC: UIViewController {
     @IBAction private func convertButtonTapped(_ sender: Any) {
         print("Convert")
         convert(amount: amountTextFiled.text!, from: "JPY", to: "KWD")
-        exchangeRate(for: selectedFromCurrency)
+//        exchangeRate(for: selectedFromCurrency)
 
     }
     

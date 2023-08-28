@@ -30,6 +30,7 @@ class FavoriteListVC: UIViewController, BaseView {
     
     // MARK: IBOutlets    
     @IBOutlet weak private(set) var tableView: UITableView!
+    @IBOutlet weak var containerView: UIView!
     
     // MARK: Life cycle
     
@@ -41,14 +42,18 @@ class FavoriteListVC: UIViewController, BaseView {
         
     }
     
-    // MARK: - Actions
-    
     // MARK: - Configs
     
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        containerView.layer.cornerRadius = 20
         tableView.register(UINib(nibName: "FavoriteCell", bundle: nil), forCellReuseIdentifier: "FavoriteCell")
+    }
+    
+    // MARK: - Actions
+    @IBAction func dismissButtonTapped(_ sender: Any) {
+        dismiss(animated: true)
     }
     
     // MARK: Methods
