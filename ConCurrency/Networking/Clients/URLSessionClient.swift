@@ -19,13 +19,13 @@ final class URLSessionClient: HTTPClient {
                 }
             }
             
-            if let error = error {
+            if let error {
                 LoggerManager.error(message: "\(error.localizedDescription)")
                 result = .failure(error)
                 return
             }
             
-            guard let data  = data else {
+            guard let data else {
                 result = .failure(NetworkError.noData)
                 return
             }

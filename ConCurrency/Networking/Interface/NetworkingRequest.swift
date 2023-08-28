@@ -23,7 +23,7 @@ extension NetworkingRequest {
     
     func buildURLRequest() -> URLRequest {
         var urlCompnents = URLComponents(string: NetworkingConstants.baseURL)!
-        if let queryItems = queryItems {
+        if let queryItems {
             urlCompnents.queryItems?.append(contentsOf: queryItems)
         }
         let baseURL = urlCompnents.url!

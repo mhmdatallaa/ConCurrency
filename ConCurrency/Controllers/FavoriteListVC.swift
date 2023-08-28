@@ -7,126 +7,157 @@
 
 import UIKit
 
+// MARK: - Action Type
+
 enum ActionType {
     case add, remove
 }
 
-protocol CurrencyFavoriting: AnyObject {
+// MARK: - CurrencyFavoritingDelegate
+
+protocol CurrencyFavoritingDelegate: AnyObject {
     func favorite(currency: Currency, actionType: ActionType)
 }
 
+// MARK: - FavoriteListVC
 
-class FavoriteListVC: UIViewController {
+class FavoriteListVC: UIViewController, BaseView {
+    
+    // MARK: Properties
+    lazy var presenter = FavoriteListPresenter(view: self)
+    var currencies: [Currency] = []
+    var isFavorite: Bool = false
     
     // MARK: IBOutlets    
     @IBOutlet weak private(set) var tableView: UITableView!
-    
-    // MARK: Properties
-    
-    weak var delegate: CurrencyFavoriting?
-    var currencies: [Currency] = []
-    var indexPath: IndexPath!
-    var currencyListService: CurreciesListServicing!
     
     // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureTableView()
+        fetchAllCurrencies()
+        
+    }
+    
+    // MARK: - Actions
+    
+    // MARK: - Configs
+    
+    private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        
-        NetworkingManager.shared.fetchAllCurrencies { result in
+        tableView.register(UINib(nibName: "FavoriteCell", bundle: nil), forCellReuseIdentifier: "FavoriteCell")
+    }
+    
+    // MARK: Methods
+    
+    private func fetchAllCurrencies() {
+        NetworkingManager.shared.fetchAllCurrencies { [weak self] result in
+            guard let self else { return }
             switch result {
             case .success(let currencies):
                 self.currencies = currencies.data
                 self.tableView.reloadData()
             case .failure(let error):
-                print(error)
-            }
-        }
-        
-        tableView.register(UINib(nibName: "FavoriteCell", bundle: nil), forCellReuseIdentifier: "FavoriteCell")
-    }
-    
-}
-
-// MARK: - Extensions
-
-extension FavoriteListVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        currencies.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell") as? FavoriteCell else {
-            LoggerManager.error(message: "Couldn't cast Favorite cell")
-            return UITableViewCell()
-        }
-        let currency = currencies[indexPath.row]
-        cell.configureCellViews(name: currency.name, imageURL: currency.flagURL)
-        cell.selectionStyle = .none
-        PersistenceManager.retrieveFavorites { result in
-            switch result {
-            case .success(let favoriteCurrencies):
-                if let _ = favoriteCurrencies.firstIndex(of: currency) {
-                    cell.setImage(for: "checkmark.circle.fill")
-                }
-            case .failure(let error):
                 LoggerManager.error(message: error.localizedDescription)
             }
         }
-        
-        return cell
+
     }
+    
+    
+}
+
+
+
+
+// MARK: - Extensions
+
+    extension FavoriteListVC: UITableViewDataSource {
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            print(currencies.count)
+            return currencies.count
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell") as? FavoriteCell else {
+                LoggerManager.error(message: "Couldn't cast to Favorite cell")
+                return UITableViewCell()
+            }
+            
+            let currency = currencies[indexPath.row]
+            cell.configureCellViews(name: currency.name, imageURL: currency.flagURL)
+            cell.selectionStyle = .none
+            
+            let favoriteCurrencies = retrieveFavoriteCurrencies()
+            if let _ = favoriteCurrencies.firstIndex(of: currency) {
+                cell.setImage(for: "checkmark.circle.fill")
+            }
+            
+            return cell
+        }
+        
+        
+        
+        private func retrieveFavoriteCurrencies() -> [Currency] {
+            var currencies = [Currency]()
+            PersistenceManager.retrieveFavorites { result in
+                switch result {
+                case .success(let favoriteCurrencies):
+                    currencies = favoriteCurrencies
+                case .failure(let error):
+                    LoggerManager.error(message: error.localizedDescription)
+                }
+            }
+            
+            return currencies
+        }
+    
     
 }
 
 extension FavoriteListVC: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         65
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = self.tableView.cellForRow(at: indexPath) as? FavoriteCell
+        guard let cell = self.tableView.cellForRow(at: indexPath) as? FavoriteCell else {
+            LoggerManager.error(message: "Couldn't cast cell to FavoriteCell")
+            return
+        }
         let currency = currencies[indexPath.row]
         
-        if cell?.checkMarkImage.image == UIImage(systemName: "checkmark.circle.fill") {
-            PersistenceManager.updateWith(favorite: currencies[indexPath.row], actionType: .remove) { _ in
-                print("Errrrrrror")
-            }
-            delegate?.favorite(currency: currency, actionType: .remove)
-
-            cell?.checkMarkImage.image = UIImage(systemName: "circle")
+        if cell.checkMarkImage.image == UIImage(systemName: "checkmark.circle.fill") {
+            presenter.removeFromFavorite(currency)
+            cell.checkMarkImage.image = UIImage(systemName: "circle")
             return
         }
-        print(currency)
-        PersistenceManager.updateWith(favorite: currency, actionType: .add) { error in
-            if let error = error {
-                LoggerManager.error(message: error.localizedDescription)
-            } else {
-                cell?.checkMarkImage.image = UIImage(systemName: "checkmark.circle.fill")
-            }
-
-        }
-        delegate?.favorite(currency: currency, actionType: .add)
+        
+        presenter.addToFavorite(currency)
+        cell.checkMarkImage.image = UIImage(systemName: "checkmark.circle.fill")
+        
     }
     
+    
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = self.tableView.cellForRow(at: indexPath) as? FavoriteCell
-        let currency = currencies[indexPath.row]
-        if cell?.checkMarkImage.image == UIImage(systemName: "circle") {
-            PersistenceManager.updateWith(favorite: currencies[indexPath.row], actionType: .add) { _ in
-                print("Errrrrrror")
-            }
-            delegate?.favorite(currency: currency, actionType: .add)
-            cell?.checkMarkImage.image = UIImage(systemName: "checkmark.circle.fill")
+        guard let cell = self.tableView.cellForRow(at: indexPath) as? FavoriteCell else {
+            LoggerManager.error(message: "Couldn't cast cell to FavoriteCell")
             return
         }
-        cell?.checkMarkImage.image = UIImage(systemName: "circle")
-        PersistenceManager.updateWith(favorite: currencies[indexPath.row], actionType: .remove) { _ in
-            
-            print("Errrrrrror")
+        let currency = currencies[indexPath.row]
+        
+        if cell.checkMarkImage.image == UIImage(systemName: "circle") {
+            presenter.addToFavorite(currency)
+            cell.checkMarkImage.image = UIImage(systemName: "checkmark.circle.fill")
+            return
         }
-        delegate?.favorite(currency: currency, actionType: .remove)
+        
+        cell.checkMarkImage.image = UIImage(systemName: "circle")
+        presenter.removeFromFavorite(currency)
     }
 }

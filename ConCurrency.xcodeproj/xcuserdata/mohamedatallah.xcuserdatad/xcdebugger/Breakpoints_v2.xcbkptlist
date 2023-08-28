@@ -7,16 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A1A44076-C0CF-4C75-97E8-4D83D1A40F81"
+            uuid = "36917014-B5BF-47E4-9872-9BC49A751A01"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ConCurrency/Networking/Services/ConvertCurrecnyService.swift"
+            filePath = "ConCurrency/Networking/Services/CompareCurrencyService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "fetchConvertCurrency(baseCurrency:targetCurrency:amount:completion:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "fetchCompareCurrency(baseCurrency:firstTarget:secondTarget:amount:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3BD7D03B-D1AB-412F-B75B-2F23625BC42D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ConCurrency/Networking/Services/CompareCurrencyService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "fetchCompareCurrency(baseCurrency:firstTarget:secondTarget:amount:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "843F892F-BA6A-4431-8291-318BA61196B3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ConCurrency/Networking/Services/CompareCurrencyService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "fetchCompareCurrency(baseCurrency:firstTarget:secondTarget:amount:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
