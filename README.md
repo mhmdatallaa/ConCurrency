@@ -80,20 +80,17 @@ According to **MVA** *Minimum Viable Archeticture* : The main purpose was to imp
 
 ## Squad Members
 **Backend**
-- 
--
+- Mahmoud Matar
+- Farah AbuElazm
+
 **iOS**
 - [Mohamed Atallah](https://github.com/mhmdatallaa)
 - [Manar Kamel](https://github.com/mnarkamel)
 
 **Android**
--
--
--
+- Mahmoud
+- Abdelrahman
 
 **Web**
--
--
-
-
-
+- Saif Ashraf
+- Mohamed Fawzy
