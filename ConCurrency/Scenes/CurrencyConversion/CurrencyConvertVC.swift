@@ -61,7 +61,7 @@ class CurrencyConvertVC: UIViewController {
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = protofolioDataSource
-        tableView.register(UINib(nibName: Constants.cellName, bundle: nil), forCellReuseIdentifier: Constants.cellName)
+        tableView.register(UINib(nibName: CellConstant.protofolioCellIdentifier, bundle: nil), forCellReuseIdentifier: CellConstant.protofolioCellIdentifier)
         tableView.isScrollEnabled = false
     }
     
@@ -208,7 +208,6 @@ extension CurrencyConvertVC: UITextFieldDelegate {
 private enum Constants {
     static let defaultSourceCurrency = "EGP"
     static let defualTargetCurrency = "EGP"
-    static let cellName = "ProtofolioCell"
     static let storyboardName = "Main"
     static let alerttitleError = "Ooops 😶"
     static let alertMessageError = "Server Error ❌, Please check your internet connection or try again later."

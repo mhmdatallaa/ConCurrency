@@ -26,7 +26,7 @@ class ProtofolioDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = "ProtofolioCell"
+        let identifier = CellConstant.protofolioCellIdentifier
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ProtofolioCell
         let currency = favoriteCurrencies[indexPath.row]
         
@@ -36,7 +36,7 @@ class ProtofolioDataSource: NSObject, UITableViewDataSource {
 
             }
         }
-        cell.configureCellViews(currencyCode: currency.currencyCode, currencyName: currency.currencyCode, imageURL: currency.flagURL)
+        cell.configureCellViews(currencyCode: currency.currencyCode, currencyName: "CURRENCY", imageURL: currency.flagURL)
         return cell
     }
     

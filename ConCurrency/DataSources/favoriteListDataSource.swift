@@ -17,10 +17,10 @@ class FavoriteListDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = Constants.cellIdentifier
+        let identifier = CellConstant.favoriteCellIdentifer
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! FavoriteCell
         let currency = currencies[indexPath.row]
-        cell.configureCellViews(currencyCode: currency.currencyCode, currencyName: "CURRENCY", imageURL: currency.flagURL)
+        cell.configureCellViews(currencyCode: currency.currencyCode, currencyName: currency.name, imageURL: currency.flagURL)
         cell.selectionStyle = .none
         if let _ = favoriteCurrencies.firstIndex(of: currency) {
             cell.setImage(for: Constants.checkMark)
@@ -33,5 +33,4 @@ class FavoriteListDataSource: NSObject, UITableViewDataSource {
 
 private enum Constants {
     static let checkMark = "checkmark.circle.fill"
-    static let cellIdentifier = "FavoriteCell"
 }
