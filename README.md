@@ -48,8 +48,7 @@ The currency conversion app aims to provide users with real-time and accurate cu
 - ![image](https://github.com/mhmdatallaa/CurrenSee/assets/100219531/7ec40d3d-189f-4f04-9230-abb5969eca0f)
 
 - **Showing toast message when user add or remove from the favorites**
-- ![image](https://github.com/mhmdatallaa/CurrenSee/assets/100219531/477764fd-1bab-477b-810e-27226d83183b)
-![image](https://github.com/mhmdatallaa/CurrenSee/assets/100219531/66d57c5b-cfad-448b-a4c0-a9e0e9300abe)
+- ![image](https://github.com/mhmdatallaa/CurrenSee/assets/100219531/477764fd-1bab-477b-810e-27226d83183b) ![image](https://github.com/mhmdatallaa/CurrenSee/assets/100219531/66d57c5b-cfad-448b-a4c0-a9e0e9300abe)
 
 - **User can use only decimal pad keyboard & dismiss it when tab on any part of the scereen**
 
