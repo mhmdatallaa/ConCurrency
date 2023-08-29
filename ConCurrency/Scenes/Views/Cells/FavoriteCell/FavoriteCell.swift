@@ -11,26 +11,21 @@ class FavoriteCell: UITableViewCell {
     
     @IBOutlet weak private(set) var favoriteFlagImage: UIImageView!
     @IBOutlet weak private(set) var currencyCodeLabel: UILabel!
-//    @IBOutlet weak var checkMarkButton: UIButton!
     @IBOutlet weak var checkMarkImage: UIImageView!
+    @IBOutlet weak var currencyNameLabel: UILabel!
     
     var image: String!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
     
     func setImage(for currency: String) {
         checkMarkImage.image = UIImage(systemName: currency)
     }
-    func configureCellViews(name: String, imageURL: String) {
-        currencyCodeLabel.text = name
+    func configureCellViews(currencyCode: String, currencyName: String, imageURL: String) {
+        currencyCodeLabel.text = currencyCode
+        currencyNameLabel.text = currencyName
         favoriteFlagImage.roundCorner()
         favoriteFlagImage.download(from: imageURL)
     }

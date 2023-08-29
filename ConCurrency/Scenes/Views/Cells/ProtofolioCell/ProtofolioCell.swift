@@ -12,20 +12,16 @@ class ProtofolioCell: UITableViewCell {
     @IBOutlet weak var flagImage: UIImageView!
     @IBOutlet weak var currencyNameLabel: UILabel!
     @IBOutlet weak var exchangeRateLabel: UILabel!
+    @IBOutlet weak var currencySubLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    func configureCellViews(currencyName: String, imageURL: String) {
-        currencyNameLabel.text = currencyName
+    func configureCellViews(currencyCode: String, currencyName: String, imageURL: String) {
+        currencyNameLabel.text = currencyCode
+        currencySubLabel.text = currencyName
         flagImage.roundCorner()
         flagImage.download(from: imageURL)
     }

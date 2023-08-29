@@ -290,7 +290,10 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Quf-iC-vr2">
-                                                <rect key="frame" x="229" y="355.66666666666669" width="148" height="45.666666666666686"/>
+                                                <rect key="frame" x="229" y="355.66666666666669" width="148" height="34.333333333333314"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34.333333333333314" id="fIT-Iu-SuA"/>
+                                                </constraints>
                                                 <color key="tintColor" red="0.21176470589999999" green="0.21176470589999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system" title="Add to Favorites">
@@ -301,7 +304,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="live exchange rates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7C-Ew-Sk7" userLabel="live exchange rates">
-                                                <rect key="frame" x="16" y="368.33333333333331" width="152.33333333333334" height="20.333333333333314"/>
+                                                <rect key="frame" x="16" y="362.66666666666669" width="152.33333333333334" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -314,7 +317,7 @@
                                                 </constraints>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Protofolio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sl-Jf-dtg">
-                                                <rect key="frame" x="16" y="420.66666666666669" width="101" height="20.333333333333314"/>
+                                                <rect key="frame" x="16" y="406" width="101" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -322,7 +325,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No favorite currencies yet 🙄" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RMY-XA-b8a">
                                                 <rect key="frame" x="0.0" y="457" width="393" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemGray2Color"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -348,7 +351,7 @@
                                             <constraint firstItem="4uu-pj-owQ" firstAttribute="top" secondItem="qPU-SC-Bob" secondAttribute="top" constant="48" id="TDl-zM-hh4"/>
                                             <constraint firstItem="zNf-GN-WMB" firstAttribute="leading" secondItem="qPU-SC-Bob" secondAttribute="leading" constant="16" id="Yma-lo-GVe"/>
                                             <constraint firstItem="rhk-yK-5Z5" firstAttribute="top" secondItem="4uu-pj-owQ" secondAttribute="bottom" constant="16" id="bwS-1p-DUv"/>
-                                            <constraint firstItem="1sl-Jf-dtg" firstAttribute="top" secondItem="n7C-Ew-Sk7" secondAttribute="bottom" constant="32" id="byN-kh-GCo"/>
+                                            <constraint firstItem="1sl-Jf-dtg" firstAttribute="top" secondItem="Quf-iC-vr2" secondAttribute="bottom" constant="16" id="cLd-Xa-thw"/>
                                             <constraint firstAttribute="trailing" secondItem="zNf-GN-WMB" secondAttribute="trailing" constant="16" id="eW4-2f-fQC"/>
                                             <constraint firstAttribute="trailing" secondItem="xvw-RS-jND" secondAttribute="trailing" constant="16" id="gf6-uP-k7f"/>
                                             <constraint firstItem="NPI-PT-RH9" firstAttribute="top" secondItem="1sl-Jf-dtg" secondAttribute="bottom" constant="8" id="hTA-Op-Pg1"/>
@@ -579,7 +582,7 @@
                                                         <color key="value" systemColor="systemGray4Color"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="arrowSize">
-                                                        <real key="value" value="20"/>
+                                                        <real key="value" value="15"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="arrowColor">
                                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -628,7 +631,7 @@
                                                         <color key="value" systemColor="systemGray4Color"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="arrowSize">
-                                                        <real key="value" value="20"/>
+                                                        <real key="value" value="15"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="arrowColor">
                                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
