@@ -14,6 +14,7 @@ class FavoriteListPresenterTests: XCTestCase {
     
     private var presenter: FavoriteListPresenter!
     private var mockView: MockFavoriteListView!
+    private var delegate: MockDelegate!
     
     // MARK: Lif cycle
     
@@ -21,15 +22,43 @@ class FavoriteListPresenterTests: XCTestCase {
         super.setUp()
         mockView = MockFavoriteListView()
         presenter = FavoriteListPresenter(view: mockView)
+        delegate = MockDelegate()
+        presenter.delegate = delegate
     }
     
     override func tearDown() {
         presenter = nil
         mockView = nil
-        //        mockDelegate = nil
+        delegate = nil
         super.tearDown()
     }
     
-    // MARK: - Tests
+    // MARK: tests
     
+    func testAddToFavorite() {
+        // Given
+        let currency = Currency(name: "USD", currencyCode: "USD", flagURL: "https://url")
+        
+        // When
+        presenter.addToFavorite(currency)
+        
+        // Then
+        XCTAssertTrue(delegate.favoriteCurrencyCelled)
+        XCTAssertEqual(delegate.favoriteCurrency, currency)
+        XCTAssertEqual(delegate.actionType, .add)
+    }
+    
+    func testRemoveFromFavorite() {
+        // Given
+        let currency = Currency(name: "USD", currencyCode: "USD", flagURL: "https://url")
+        
+        // When
+        presenter.removeFromFavorite(currency)
+        
+        // Then
+        XCTAssertTrue(delegate.favoriteCurrencyCelled)
+        XCTAssertEqual(delegate.favoriteCurrency, currency)
+        XCTAssertTrue(delegate.favoriteCurrencyCelled)
+        XCTAssertEqual(delegate.actionType, .remove)
+    }
 }

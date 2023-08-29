@@ -14,7 +14,7 @@ protocol FavoriteListViewProtocol: AnyObject {
 
 final class FavoriteListPresenter {
     
-    private weak var view: FavoriteListViewProtocol?
+    private(set) weak var view: FavoriteListViewProtocol?
     private let client = URLSessionClient()
     private lazy var allCurrenciesService = CurrenciesListService(client: client)
     weak var delegate: CurrencyFavoritingDelegate?

@@ -11,18 +11,17 @@ import Foundation
 class MockFavoriteListView: FavoriteListViewProtocol {
 
     var getAllCurrenciesCalled = false
-    var allCurrencies: [Currency]?
-
     var markFavoriteCurrenciesCalled = false
-    var favoriteCurrencies: [Currency]?
+    var getAllCurrencies: [Currency]?
+    var markFavoriteCurrencies: [Currency]?
 
     func getAllCurrencies(_ currencies: [Currency]) {
         getAllCurrenciesCalled = true
-        allCurrencies = currencies
+        getAllCurrencies = currencies
     }
 
     func markFavoriteCurrencies(_ currencies: [Currency]) {
         markFavoriteCurrenciesCalled = true
-        favoriteCurrencies = currencies
+        markFavoriteCurrencies = currencies
     }
 }
