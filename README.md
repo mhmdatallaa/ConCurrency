@@ -29,7 +29,7 @@ The currency conversion app aims to provide users with real-time and accurate cu
     - MVP Architecture
 
 - **Dependencies Manager:**
-    - Swift Package Manager (SPM
+    - Swift Package Manager (SPM)
 
 - **Dependencies:**
     - [iOSDropDown](https://github.com/jriosdev/iOSDropDown): Supporting Drop Down menu in iOS
@@ -40,7 +40,7 @@ The currency conversion app aims to provide users with real-time and accurate cu
 
  
 ## App Preview
-<img src="https://github.com/mhmdatallaa/ConCurrency/assets/100219531/70f1c1f0-075a-4759-b43c-cf604d9a20f2" width="400">     <img src="https://github.com/mhmdatallaa/ConCurrency/assets/100219531/43ae0720-eca9-4c73-b655-dd3c4489f630" width="400">     
+<img src="https://github.com/mhmdatallaa/ConCurrency/assets/100219531/be51d91b-0e41-47e6-b450-61599fa92978" width="400">     <img src="https://github.com/mhmdatallaa/ConCurrency/assets/100219531/a7a9a790-b0b6-40ba-a34a-45a6647bc7d3" width="400">     
 
 
 ## User experience (UX)
@@ -73,7 +73,7 @@ The currency conversion app aims to provide users with real-time and accurate cu
    - Debugging techniques like: *Symbolic break points*
 
 ## Further Enhancements
-According to **MVA** *Minimum Viable Archeticture* : The main purpose was to implement the main features that make the app work (go to the realse phase).
+According to **MVA** *Minimum Viable Architecture* : The main purpose was to implement the main features that make the app work (go to the realse phase).
 
 - Add Splach Screen 
 - Add more features ( Showing exhange rate charts, Support more currencies, ...)
