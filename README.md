@@ -40,7 +40,8 @@ The currency conversion app aims to provide users with real-time and accurate cu
 
  
 ## App Preview
-<img src="https://github.com/mhmdatallaa/CurrenSee/assets/100219531/0d976133-47cd-4192-99a2-4fb15c0e0488" width="400">     
+<img src="https://github.com/mhmdatallaa/ConCurrency/assets/100219531/70f1c1f0-075a-4759-b43c-cf604d9a20f2" width="400">     <img src="https://github.com/mhmdatallaa/ConCurrency/assets/100219531/43ae0720-eca9-4c73-b655-dd3c4489f630" width="400">     
+
 
 ## User experience (UX)
 - **Showing an alert to the user when there's an error in network**
