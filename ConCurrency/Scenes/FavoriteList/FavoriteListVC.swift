@@ -51,7 +51,7 @@ class FavoriteListVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = favoriteListDataSource
         containerView.layer.cornerRadius = Constants.containerViewCornerRadius
-        tableView.register(UINib(nibName: Constants.cellName, bundle: nil), forCellReuseIdentifier: Constants.cellName)
+        tableView.register(UINib(nibName: CellConstant.favoriteCellIdentifer, bundle: nil), forCellReuseIdentifier: CellConstant.favoriteCellIdentifer)
     }
     
     // MARK: - Actions
@@ -131,7 +131,6 @@ private enum Constants {
     static let circleCheckMark = "circle"
     static let fillCircleCheckMark = "checkmark.circle.fill"
     static let castingErrorMessage = "Couldn't cast cell to FavoriteCell"
-    static let cellName = "FavoriteCell"
     static let containerViewCornerRadius: CGFloat = 20
     static let cellHeigt: CGFloat = 80
 }
