@@ -25,8 +25,6 @@
 		6D23A7BB2A98C6AA0007C061 /* LoggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D23A7BA2A98C6AA0007C061 /* LoggerManager.swift */; };
 		6D2AC58E2A9D5544000FFE90 /* FavoriteListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2AC58C2A9D5523000FFE90 /* FavoriteListPresenterTest.swift */; };
 		6D2AC5902A9D57FE000FFE90 /* MockFavoriteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2AC58F2A9D57FE000FFE90 /* MockFavoriteListView.swift */; };
-		6D2AC5922A9D58B4000FFE90 /* CurrencyComparePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2AC5912A9D58B4000FFE90 /* CurrencyComparePresenterTests.swift */; };
-		6D2AC5942A9D59EA000FFE90 /* MockCurrencyCompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2AC5932A9D59EA000FFE90 /* MockCurrencyCompareView.swift */; };
 		6D2AC5972A9D5C39000FFE90 /* favoriteListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2AC5962A9D5C39000FFE90 /* favoriteListDataSource.swift */; };
 		6D2AC5992A9D6360000FFE90 /* ProtofolioDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2AC5982A9D6360000FFE90 /* ProtofolioDataSource.swift */; };
 		6D3A247F2A99CE9300941039 /* CompareCurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A247E2A99CE9300941039 /* CompareCurrencyService.swift */; };
@@ -35,10 +33,9 @@
 		6D7FA3E62A9A97B3009D9CFF /* ProtofolioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7FA3E42A9A97B3009D9CFF /* ProtofolioCell.swift */; };
 		6D7FA3E72A9A97B3009D9CFF /* ProtofolioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D7FA3E52A9A97B3009D9CFF /* ProtofolioCell.xib */; };
 		6D9A46A82A9E2B6C00B04922 /* CellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A46A72A9E2B6C00B04922 /* CellConstants.swift */; };
+		6D9A46AA2A9E3D4C00B04922 /* MockDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9A46A92A9E3D4C00B04922 /* MockDelegate.swift */; };
 		6D9EF52E2A9D30710022617E /* CurrencyComparePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9EF52D2A9D30710022617E /* CurrencyComparePresenter.swift */; };
 		6D9EF5322A9D3A750022617E /* PersistingManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9EF5312A9D3A750022617E /* PersistingManagerProtocol.swift */; };
-		6D9EF5432A9D49530022617E /* CurrencyConvertPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9EF5342A9D48600022617E /* CurrencyConvertPresenterTests.swift */; };
-		6D9EF5452A9D49D00022617E /* MockCurrencyConvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9EF5442A9D49D00022617E /* MockCurrencyConvertView.swift */; };
 		6DA078D72A9A291A000729F5 /* PersistingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA078D62A9A291A000729F5 /* PersistingManager.swift */; };
 		6DA078D92A9A2A0D000729F5 /* PersistingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA078D82A9A2A0D000729F5 /* PersistingError.swift */; };
 		6DA64DD62A9894EB0002ABDB /* CCSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA64DD52A9894EB0002ABDB /* CCSegmentedControl.swift */; };
@@ -96,8 +93,6 @@
 		6D23A7BA2A98C6AA0007C061 /* LoggerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerManager.swift; sourceTree = "<group>"; };
 		6D2AC58C2A9D5523000FFE90 /* FavoriteListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListPresenterTest.swift; sourceTree = "<group>"; };
 		6D2AC58F2A9D57FE000FFE90 /* MockFavoriteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFavoriteListView.swift; sourceTree = "<group>"; };
-		6D2AC5912A9D58B4000FFE90 /* CurrencyComparePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyComparePresenterTests.swift; sourceTree = "<group>"; };
-		6D2AC5932A9D59EA000FFE90 /* MockCurrencyCompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCurrencyCompareView.swift; sourceTree = "<group>"; };
 		6D2AC5962A9D5C39000FFE90 /* favoriteListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favoriteListDataSource.swift; sourceTree = "<group>"; };
 		6D2AC5982A9D6360000FFE90 /* ProtofolioDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtofolioDataSource.swift; sourceTree = "<group>"; };
 		6D3A247E2A99CE9300941039 /* CompareCurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCurrencyService.swift; sourceTree = "<group>"; };
@@ -106,11 +101,10 @@
 		6D7FA3E42A9A97B3009D9CFF /* ProtofolioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtofolioCell.swift; sourceTree = "<group>"; };
 		6D7FA3E52A9A97B3009D9CFF /* ProtofolioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProtofolioCell.xib; sourceTree = "<group>"; };
 		6D9A46A72A9E2B6C00B04922 /* CellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConstants.swift; sourceTree = "<group>"; };
+		6D9A46A92A9E3D4C00B04922 /* MockDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDelegate.swift; sourceTree = "<group>"; };
 		6D9EF52D2A9D30710022617E /* CurrencyComparePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyComparePresenter.swift; sourceTree = "<group>"; };
 		6D9EF5312A9D3A750022617E /* PersistingManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistingManagerProtocol.swift; sourceTree = "<group>"; };
-		6D9EF5342A9D48600022617E /* CurrencyConvertPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConvertPresenterTests.swift; sourceTree = "<group>"; };
 		6D9EF53A2A9D494E0022617E /* ConCurrencyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConCurrencyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D9EF5442A9D49D00022617E /* MockCurrencyConvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCurrencyConvertView.swift; sourceTree = "<group>"; };
 		6DA078D62A9A291A000729F5 /* PersistingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistingManager.swift; sourceTree = "<group>"; };
 		6DA078D82A9A2A0D000729F5 /* PersistingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistingError.swift; sourceTree = "<group>"; };
 		6DA64DD52A9894EB0002ABDB /* CCSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCSegmentedControl.swift; sourceTree = "<group>"; };
@@ -210,31 +204,13 @@
 			path = Logger;
 			sourceTree = "<group>";
 		};
-		6D2A91AC2A9DF51400565869 /* CurrencyConvertPresesnterTests */ = {
-			isa = PBXGroup;
-			children = (
-				6D9EF5342A9D48600022617E /* CurrencyConvertPresenterTests.swift */,
-				6D9EF5442A9D49D00022617E /* MockCurrencyConvertView.swift */,
-			);
-			path = CurrencyConvertPresesnterTests;
-			sourceTree = "<group>";
-		};
 		6D2A91AD2A9DF52700565869 /* FavoriteListPresenterTests */ = {
 			isa = PBXGroup;
 			children = (
+				6D9A46AD2A9E49CF00B04922 /* Mocks */,
 				6D2AC58C2A9D5523000FFE90 /* FavoriteListPresenterTest.swift */,
-				6D2AC58F2A9D57FE000FFE90 /* MockFavoriteListView.swift */,
 			);
 			path = FavoriteListPresenterTests;
-			sourceTree = "<group>";
-		};
-		6D2A91AE2A9DF54300565869 /* CompareCurrencyPresenterTests */ = {
-			isa = PBXGroup;
-			children = (
-				6D2AC5912A9D58B4000FFE90 /* CurrencyComparePresenterTests.swift */,
-				6D2AC5932A9D59EA000FFE90 /* MockCurrencyCompareView.swift */,
-			);
-			path = CompareCurrencyPresenterTests;
 			sourceTree = "<group>";
 		};
 		6D2A91AF2A9DF67D00565869 /* Delegate */ = {
@@ -253,6 +229,15 @@
 				6D2AC5982A9D6360000FFE90 /* ProtofolioDataSource.swift */,
 			);
 			path = DataSources;
+			sourceTree = "<group>";
+		};
+		6D9A46AD2A9E49CF00B04922 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				6D9A46A92A9E3D4C00B04922 /* MockDelegate.swift */,
+				6D2AC58F2A9D57FE000FFE90 /* MockFavoriteListView.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		6D9EF52B2A9D21E20022617E /* CurrencyConversion */ = {
@@ -293,9 +278,7 @@
 		6D9EF53B2A9D494E0022617E /* ConCurrencyTests */ = {
 			isa = PBXGroup;
 			children = (
-				6D2A91AC2A9DF51400565869 /* CurrencyConvertPresesnterTests */,
 				6D2A91AD2A9DF52700565869 /* FavoriteListPresenterTests */,
-				6D2A91AE2A9DF54300565869 /* CompareCurrencyPresenterTests */,
 			);
 			path = ConCurrencyTests;
 			sourceTree = "<group>";
@@ -624,11 +607,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D2AC58E2A9D5544000FFE90 /* FavoriteListPresenterTest.swift in Sources */,
-				6D2AC5942A9D59EA000FFE90 /* MockCurrencyCompareView.swift in Sources */,
-				6D2AC5922A9D58B4000FFE90 /* CurrencyComparePresenterTests.swift in Sources */,
-				6D9EF5432A9D49530022617E /* CurrencyConvertPresenterTests.swift in Sources */,
 				6D2AC5902A9D57FE000FFE90 /* MockFavoriteListView.swift in Sources */,
-				6D9EF5452A9D49D00022617E /* MockCurrencyConvertView.swift in Sources */,
+				6D9A46AA2A9E3D4C00B04922 /* MockDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
