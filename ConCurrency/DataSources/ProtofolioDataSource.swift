@@ -36,7 +36,7 @@ class ProtofolioDataSource: NSObject, UITableViewDataSource {
 
             }
         }
-        cell.configureCellViews(currencyName: currency.name, imageURL: currency.flagURL)
+        cell.configureCellViews(currencyCode: currency.currencyCode, currencyName: currency.currencyCode, imageURL: currency.flagURL)
         return cell
     }
     

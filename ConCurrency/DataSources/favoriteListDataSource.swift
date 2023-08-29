@@ -17,16 +17,21 @@ class FavoriteListDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = "FavoriteCell"
+        let identifier = Constants.cellIdentifier
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! FavoriteCell
         let currency = currencies[indexPath.row]
-        cell.configureCellViews(name: currency.name, imageURL: currency.flagURL)
+        cell.configureCellViews(currencyCode: currency.currencyCode, currencyName: "CURRENCY", imageURL: currency.flagURL)
         cell.selectionStyle = .none
         if let _ = favoriteCurrencies.firstIndex(of: currency) {
-            cell.setImage(for: "checkmark.circle.fill")
+            cell.setImage(for: Constants.checkMark)
         }
         
         return cell
     }
     
+}
+
+private enum Constants {
+    static let checkMark = "checkmark.circle.fill"
+    static let cellIdentifier = "FavoriteCell"
 }
