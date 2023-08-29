@@ -88,9 +88,9 @@ According to **MVA** *Minimum Viable Archeticture* : The main purpose was to imp
 - [Manar Kamel](https://github.com/mnarkamel)
 
 **Android**
-- Mahmoud
-- Abdelrahman
+- [Mahmoud](https://github.com/Mahmoudadel17)
+- [Abdelrahman](https://github.com/abdelrahmanmohamed19)
 
 **Web**
-- Saif Ashraf
+- [Saif Ashraf](https://github.com/SaifAshraf22)
 - Mohamed Fawzy
