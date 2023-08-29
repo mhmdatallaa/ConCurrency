@@ -8,6 +8,11 @@
 import Foundation
 
 extension String {
+    
+    var trimm: String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
     func intoEmoji() -> String {
         let code = self.dropLast()
         let base: UInt32 = 127397

@@ -19,11 +19,6 @@ struct CompareCurrencyResponse: Decodable {
 struct CompareData: Decodable {
     let baseCode: String
     let conversionRates: ConversionRates
-
-    enum CodingKeys: String, CodingKey {
-        case baseCode = "base_code"
-        case conversionRates = "conversion_rates"
-    }
 }
 
 // MARK: - ConversionRates

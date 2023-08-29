@@ -19,22 +19,30 @@ class CurrencyCompareVC: UIViewController {
     @IBOutlet weak private(set) var targeted2DropDown: DropDown!
     @IBOutlet weak private(set) var targeted2Label: UILabel!
     @IBOutlet weak private(set) var compareButton: UIButton!
+    @IBOutlet weak private(set) var compareButtonIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
     
     lazy var presenter = CurrencyComparePresenter(view: self)
     private var allCurrencies: [Currency] = []
-    private var sourceCurrency = "USD"
-    private var target1Currency = "USD"
-    private var target2Currency = "USD"
+    private var sourceCurrency = Constants.defaultSoruceCurrency
+    private var target1Currency = Constants.defaultTarget1Currency
+    private var target2Currency = Constants.defaultSTarget2Currency
     
     // MARK: - Life cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         amountTextField.delegate = self
         configureViewsApperance()
         presenter.fetchAllCurrencies()
+    }
+    
+    // MARK: - Superclass methods
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        // Dismiss the keyboard by resigning first responder
+        amountTextField.resignFirstResponder()
     }
     
     // MARK: - Configs
@@ -81,7 +89,6 @@ class CurrencyCompareVC: UIViewController {
         targeted2DropDown.selectedIndex = 0
         targeted2DropDown.didSelect{ [weak self] (selectedText , index ,_) in
             guard let self else { return }
-            print(selectedText, index)
             let selectedCurrency = self.allCurrencies[index].currencyCode
             self.target2Currency = selectedCurrency
         }
@@ -90,10 +97,11 @@ class CurrencyCompareVC: UIViewController {
     // MARK: - Actions
 
     @IBAction private func compareButtonTapped(_ sender: Any) {
-        print("compare")
         // TODO: Handle empty text state & Dounle conversion
-        let amount = amountTextField.text!
-        presenter.compare(baseCurrency: sourceCurrency, firstTarget: target1Currency, secondTarget: target2Currency, amount: Double(amount)!)
+        let amount = Double(amountTextField.text!.trimm)!
+        compareButtonIndicator.startAnimating()
+        compareButton.setTitle(Constants.emptycompareButtonTitle, for: .normal)
+        presenter.compare(baseCurrency: sourceCurrency, firstTarget: target1Currency, secondTarget: target2Currency, amount: amount)
     }
 }
 
@@ -101,8 +109,10 @@ class CurrencyCompareVC: UIViewController {
 
 extension CurrencyCompareVC: CurrencyCompareViewProtocol {
     func updateResult(target1: String, target2: String) {
-        targeted1Label.text = target1
-        targeted2Label.text = target2
+        targeted1Label.text = "   " + target1
+        targeted2Label.text = "   " + target2
+        compareButton.setTitle(Constants.compareButtonTitle, for: .normal)
+        compareButtonIndicator.stopAnimating()
     }
     
     func getAllCurrencies(_ currencies: [Currency]) {
@@ -132,3 +142,10 @@ extension CurrencyCompareVC: UITextFieldDelegate {
     
 }
 
+private enum Constants {
+    static let emptycompareButtonTitle = ""
+    static let compareButtonTitle = "Compare"
+    static let defaultSoruceCurrency = "EGP"
+    static let defaultTarget1Currency = "EGP"
+    static let defaultSTarget2Currency = "EGP"
+}

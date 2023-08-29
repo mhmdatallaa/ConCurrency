@@ -33,7 +33,7 @@ final class URLSessionClient: HTTPClient {
             if let httpResponse = response as? HTTPURLResponse {
                 switch httpResponse.statusCode {
                 case 200:
-                    LoggerManager.info(message: " ✅ Status Code: 200")
+                    LoggerManager.info(message: Constants.successMessage)
                     break
                 case 404, 422:
                     result = .failure(NetworkError.noData)
@@ -56,4 +56,8 @@ final class URLSessionClient: HTTPClient {
         }
         .resume()
     }
+}
+
+private enum Constants {
+    static let successMessage = " ✅ Status Code: 200"
 }

@@ -15,9 +15,10 @@ class CurrencyConvertVC: UIViewController {
     private var favoriteCurrencies: [Currency] = []
     private var allCurrencies: [Currency] = []
     private var exchangeRates: [ExchageRate] = []
-    private var sourceCurrency = "EGP"
-    private var targetCurrency = "EGP"
+    private var sourceCurrency = Constants.defaultSourceCurrency
+    private var targetCurrency = Constants.defualTargetCurrency
     private let favoriteListVC = FavoriteListVC()
+    private let protofolioDataSource = ProtofolioDataSource()
     private lazy var presenter = CurrencyConvertPresenter(view: self)
     
     // MARK: - IBOutlet
@@ -29,6 +30,8 @@ class CurrencyConvertVC: UIViewController {
     @IBOutlet weak private(set) var convertButton: UIButton!
     @IBOutlet weak private(set) var addToFavoriteButton: UIButton!
     @IBOutlet weak private(set) var tableView: UITableView!
+    @IBOutlet weak private(set) var emptyFavoriteLabel: UILabel!
+    @IBOutlet weak private(set) var buttonIndicator: UIActivityIndicatorView!
     
     // MARK: - Life cycle
     
@@ -36,46 +39,55 @@ class CurrencyConvertVC: UIViewController {
         super.viewDidLoad()
         
         amountTextFiled.delegate = self
+        
         configureViewsApperance()
         configureTableView()
 
-        presenter.fetchConversionRates(for: "USD")
-//        exchangeRate(for: "USD")
+        presenter.fetchConversionRates(for: Constants.defaultSourceCurrency)
         presenter.fetchAllCurrencies()
-        
         presenter.getFavoriteCurrencies()
-        
+    }
+    
+    // MARK: - Superclass methods
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        // Dismiss the keyboard by resigning first responder
+        amountTextFiled.resignFirstResponder()
     }
     
     // MARK: - Configs
     
     private func configureTableView() {
         tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "ProtofolioCell", bundle: nil), forCellReuseIdentifier: "ProtofolioCell")
+        tableView.dataSource = protofolioDataSource
+        tableView.register(UINib(nibName: Constants.cellName, bundle: nil), forCellReuseIdentifier: Constants.cellName)
         tableView.isScrollEnabled = false
     }
     
-    private func configureFromDropDown() {
-         let emojis: [String] = allCurrencies.map { $0.currencyCode.intoEmoji() + $0.currencyCode }
-        sourceDropDown.optionArray = emojis
-        sourceDropDown.selectedIndex = 0
+    private func configureDropDown() {
+        let dropDowns: [DropDown] = [sourceDropDown, targetDropDown]
+        for dropDown in dropDowns {
+            let emojis: [String] = allCurrencies.map { $0.currencyCode.intoEmoji() + $0.currencyCode }
+          dropDown.optionArray = emojis
+          dropDown.selectedIndex = 0
+        }
+        configureSourceDropDown()
+        configureTargetDropDown()
+    }
+    
+    private func configureSourceDropDown() {
         sourceDropDown.didSelect{ [weak self] (selectedText, index, _) in
             guard let self else { return }
-            print(selectedText, index)
             let selectedCurrency = self.allCurrencies[index].currencyCode
             self.sourceCurrency = selectedCurrency
             self.presenter.fetchConversionRates(for: selectedCurrency)
         }
     }
     
-    private func configureToDropDown() {
-        let emojis: [String] = allCurrencies.map { $0.currencyCode.intoEmoji() + $0.currencyCode }
-        targetDropDown.optionArray = emojis
-        targetDropDown.selectedIndex = 0
+    private func configureTargetDropDown() {
         targetDropDown.didSelect{ [weak self] (selectedText, index, id) in
             guard let self else { return }
-            print(selectedText, index)
             let selectedCurrency = self.allCurrencies[index].currencyCode
             self.targetCurrency = selectedCurrency
         }
@@ -93,15 +105,20 @@ class CurrencyConvertVC: UIViewController {
     // MARK: - Actions
     
     @IBAction private func convertButtonTapped(_ sender: Any) {
-        print("Convert")
         // TODO: handle empty textField state
-        presenter.convert(amount: amountTextFiled.text!, from: sourceCurrency, to: targetCurrency)
+        let amount = amountTextFiled.text!.trimm
+        buttonIndicator.startAnimating()
+        convertButton.setTitle(Constants.emptyconvertButtonTitle, for: .normal)
+        presenter.convert(amount: amount, from: sourceCurrency, to: targetCurrency)
     }
     
     @IBAction private func addToFavoriteButtonTapped(_ sender: Any) {
-        print("go To favorite")
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "FavoriteListVC") as! FavoriteListVC
+        goToFavoriteScreen()
+    }
+    
+    private func goToFavoriteScreen() {
+        let sb = UIStoryboard(name: Constants.storyboardName, bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: Constants.FavoriteListScreenIdentifer) as! FavoriteListVC
         vc.presenter.delegate = self
         present(vc, animated: true)
     }
@@ -113,51 +130,31 @@ class CurrencyConvertVC: UIViewController {
 extension CurrencyConvertVC: CurrencyConvertViewProtocol {
     func updateConversionRate(_ rates: [ExchageRate]) {
         exchangeRates = rates
+        protofolioDataSource.exchangeRates = exchangeRates
+        tableView.reloadData()
         presenter.getFavoriteCurrencies()
     }
     
     func updateResult(_ result: String) {
-        resultAmountLabel.text = result
+        resultAmountLabel.text = "   " + result
+        convertButton.setTitle(Constants.convertButtonTitle, for: .normal)
+        buttonIndicator.stopAnimating()
     }
     
     func showFavoriteCurrencies(_ currencies: [Currency]) {
         favoriteCurrencies = currencies
+        protofolioDataSource.favoriteCurrencies = favoriteCurrencies
+        emptyFavoriteLabel.isHidden = favoriteCurrencies.isEmpty ? false : true
         tableView.reloadData()
     }
     
     func getAllCurrencies(_ currencies: [Currency]) {
         allCurrencies = currencies
-        configureFromDropDown()
-        configureToDropDown()
+        configureDropDown()
     }
     
     func showErrorAlert() {
-        showAlert(title: "Ooops 😶", message: "Server Error ❌, Please check your internet connection or try again later.")
-    }
-}
-
-// MARK: - UITableViewDataSource Extension
-
-extension CurrencyConvertVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        favoriteCurrencies.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProtofolioCell") as? ProtofolioCell else {
-            LoggerManager.error(message: "Couldn't cast Favorite cell")
-            return UITableViewCell()
-        }
-        let currency = favoriteCurrencies[indexPath.row]
-        
-        for exchangeRate in exchangeRates {
-            if exchangeRate.code == currency.currencyCode {
-                cell.exchangeRateLabel.text = "\(exchangeRate.rate)"
-
-            }
-        }
-        cell.configureCellViews(currencyName: currency.name, imageURL: currency.flagURL)
-        return cell
+        showAlert(title: Constants.alerttitleError, message: Constants.alertMessageError)
     }
 }
 
@@ -165,7 +162,7 @@ extension CurrencyConvertVC: UITableViewDataSource {
 
 extension CurrencyConvertVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        80
+        Constants.cellHeight
     }
 }
 
@@ -176,10 +173,14 @@ extension CurrencyConvertVC: CurrencyFavoritingDelegate {
         switch actionType {
         case .add:
             favoriteCurrencies.append(currency)
+            protofolioDataSource.updateFavoriteCurrencies(currency, action: .add)
         case .remove:
-            favoriteCurrencies.removeAll {$0.currencyCode == currency.currencyCode}
+            favoriteCurrencies.removeAll { $0.currencyCode == currency.currencyCode }
+            protofolioDataSource.updateFavoriteCurrencies(currency, action: .remove)
         }
+        emptyFavoriteLabel.isHidden = favoriteCurrencies.isEmpty ? false : true
         tableView.reloadData()
+
     }
 }
 
@@ -204,3 +205,15 @@ extension CurrencyConvertVC: UITextFieldDelegate {
 }
 
 
+private enum Constants {
+    static let defaultSourceCurrency = "EGP"
+    static let defualTargetCurrency = "EGP"
+    static let cellName = "ProtofolioCell"
+    static let storyboardName = "Main"
+    static let alerttitleError = "Ooops 😶"
+    static let alertMessageError = "Server Error ❌, Please check your internet connection or try again later."
+    static let cellHeight: CGFloat = 80
+    static let convertButtonTitle = "Convert"
+    static let emptyconvertButtonTitle = ""
+    static let FavoriteListScreenIdentifer = "FavoriteListVC"
+}

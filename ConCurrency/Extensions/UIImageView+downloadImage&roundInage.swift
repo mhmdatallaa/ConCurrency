@@ -32,6 +32,11 @@ extension UIImageView {
         
         downloaded(from: url)
     }
+    
+    func roundImage() {
+        layer.cornerRadius = frame.height/2
+        layer.masksToBounds = true
+    }
 }
 
 

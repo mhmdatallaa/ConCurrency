@@ -27,29 +27,31 @@ class FavoriteListVC: UIViewController {
     lazy var presenter = FavoriteListPresenter(view: self)
     private var allCurrencies: [Currency] = []
     private var favoriteCurrencies: [Currency] = []
+    private let favoriteListDataSource = FavoriteListDataSource()
     
     // MARK: IBOutlets    
     @IBOutlet weak private(set) var tableView: UITableView!
     @IBOutlet weak private(set) var containerView: UIView!
+    @IBOutlet weak private(set) var indicator: UIActivityIndicatorView!
     
     // MARK: Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureTableView()
+        indicator.startAnimating()
         presenter.getFavoriteCurrencies()
         presenter.fetchAllCurrencies()
-        configureTableView()
-        
     }
     
     // MARK: - Configs
     
     private func configureTableView() {
         tableView.delegate = self
-        tableView.dataSource = self
-        containerView.layer.cornerRadius = 20
-        tableView.register(UINib(nibName: "FavoriteCell", bundle: nil), forCellReuseIdentifier: "FavoriteCell")
+        tableView.dataSource = favoriteListDataSource
+        containerView.layer.cornerRadius = Constants.containerViewCornerRadius
+        tableView.register(UINib(nibName: Constants.cellName, bundle: nil), forCellReuseIdentifier: Constants.cellName)
     }
     
     // MARK: - Actions
@@ -66,40 +68,16 @@ class FavoriteListVC: UIViewController {
 extension FavoriteListVC: FavoriteListViewProtocol {
     func getAllCurrencies(_ currencies: [Currency]) {
         allCurrencies = currencies
+        favoriteListDataSource.currencies = currencies
+        indicator.stopAnimating()
         tableView.reloadData()
     }
     
     func markFavoriteCurrencies(_ currencies: [Currency]) {
         favoriteCurrencies = currencies
+        favoriteListDataSource.favoriteCurrencies = favoriteCurrencies
         tableView.reloadData()
     }
-}
-
-// MARK: - UITableViewDataSource Extension
-
-    extension FavoriteListVC: UITableViewDataSource {
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            print(allCurrencies.count)
-            return allCurrencies.count
-        }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell") as? FavoriteCell else {
-                LoggerManager.error(message: "Couldn't cast to Favorite cell")
-                return UITableViewCell()
-            }
-            
-            let currency = allCurrencies[indexPath.row]
-            cell.configureCellViews(name: currency.name, imageURL: currency.flagURL)
-            cell.selectionStyle = .none
-            if let _ = favoriteCurrencies.firstIndex(of: currency) {
-                cell.setImage(for: "checkmark.circle.fill")
-            }
-            
-            return cell
-        }
-    
-    
 }
 
 // MARK: - UITableViewDelegate Extension
@@ -107,41 +85,53 @@ extension FavoriteListVC: FavoriteListViewProtocol {
 extension FavoriteListVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        65
+        Constants.cellHeigt
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? FavoriteCell else {
-            LoggerManager.error(message: "Couldn't cast cell to FavoriteCell")
+            LoggerManager.error(message: Constants.castingErrorMessage)
             return
         }
         let currency = allCurrencies[indexPath.row]
         
-        if cell.checkMarkImage.image == UIImage(systemName: "checkmark.circle.fill") {
+        if cell.checkMarkImage.image == UIImage(systemName: Constants.fillCircleCheckMark) {
             presenter.removeFromFavorite(currency)
-            cell.checkMarkImage.image = UIImage(systemName: "circle")
+            cell.checkMarkImage.image = UIImage(systemName: Constants.circleCheckMark)
+            toastMessage(action: .remove)
             return
         }
         
         presenter.addToFavorite(currency)
-        cell.checkMarkImage.image = UIImage(systemName: "checkmark.circle.fill")
-        
+        cell.checkMarkImage.image = UIImage(systemName: Constants.fillCircleCheckMark)
+        toastMessage(action: .add)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? FavoriteCell else {
-            LoggerManager.error(message: "Couldn't cast cell to FavoriteCell")
+            LoggerManager.error(message: Constants.castingErrorMessage)
             return
         }
         let currency = allCurrencies[indexPath.row]
         
-        if cell.checkMarkImage.image == UIImage(systemName: "circle") {
+        if cell.checkMarkImage.image == UIImage(systemName: Constants.circleCheckMark) {
             presenter.addToFavorite(currency)
-            cell.checkMarkImage.image = UIImage(systemName: "checkmark.circle.fill")
+            cell.checkMarkImage.image = UIImage(systemName: Constants.fillCircleCheckMark)
+            toastMessage(action: .add)
             return
         }
         
-        cell.checkMarkImage.image = UIImage(systemName: "circle")
+        cell.checkMarkImage.image = UIImage(systemName: Constants.circleCheckMark)
         presenter.removeFromFavorite(currency)
+        toastMessage(action: .remove)
     }
+}
+
+private enum Constants {
+    static let circleCheckMark = "circle"
+    static let fillCircleCheckMark = "checkmark.circle.fill"
+    static let castingErrorMessage = "Couldn't cast cell to FavoriteCell"
+    static let cellName = "FavoriteCell"
+    static let containerViewCornerRadius: CGFloat = 20
+    static let cellHeigt: CGFloat = 80
 }

@@ -26,7 +26,7 @@ struct CompareCurrencyService: CompareCurrecnyServicing {
         // Encode the request body to JSON data
         let jsonEncoder = JSONEncoder()
         guard let jsonData = try? jsonEncoder.encode(requestBody) else {
-            print("Error encoding request body")
+            LoggerManager.error(message: "Error encoding request body")
             return
         }
         

@@ -20,8 +20,8 @@ class CurrencyConvertPresenter {
     private weak var view: CurrencyConvertViewProtocol?
     private let client = URLSessionClient()
     private lazy var convertService = ConvertCurrencyService(client: client)
-    private lazy var exchangeRatesServic = CurrencyExchangeRateService(client: client)
-    private lazy var allCurrenciesService = CurrenciesListService(client: client)
+    lazy var exchangeRatesServic = CurrencyExchangeRateService(client: client)
+    lazy var allCurrenciesService = CurrenciesListService(client: client)
 
     // MARK: Init
 
@@ -49,7 +49,6 @@ class CurrencyConvertPresenter {
             switch result {
             case .success(let response):
                 self.view?.updateResult(response.data.conversionResult)
-                //                self.resultAmountLabel.text = response.data.conversionResult
             case .failure(let error):
                 LoggerManager.error(message: error.localizedDescription)
             }
