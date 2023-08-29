@@ -312,6 +312,9 @@
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NPI-PT-RH9">
                                                 <rect key="frame" x="16" y="449" width="361" height="300"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="82L-Lz-vVJ"/>
+                                                </constraints>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Protofolio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sl-Jf-dtg">
                                                 <rect key="frame" x="16" y="406" width="101" height="35"/>
@@ -355,7 +358,6 @@
                                             <constraint firstAttribute="trailing" secondItem="Quf-iC-vr2" secondAttribute="trailing" constant="16" id="iMy-Nf-wVD"/>
                                             <constraint firstAttribute="trailing" secondItem="rhk-yK-5Z5" secondAttribute="trailing" constant="16" id="kSb-Br-LZg"/>
                                             <constraint firstAttribute="trailing" secondItem="4uu-pj-owQ" secondAttribute="trailing" constant="16" id="lML-zg-38f"/>
-                                            <constraint firstAttribute="height" constant="765" id="mx7-uB-j7J"/>
                                             <constraint firstItem="xvw-RS-jND" firstAttribute="leading" secondItem="qPU-SC-Bob" secondAttribute="leading" constant="16" id="o1e-Lh-c5f"/>
                                             <constraint firstItem="1sl-Jf-dtg" firstAttribute="leading" secondItem="qPU-SC-Bob" secondAttribute="leading" constant="16" id="rkz-CS-dps"/>
                                             <constraint firstItem="Quf-iC-vr2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="n7C-Ew-Sk7" secondAttribute="trailing" constant="8" symbolic="YES" id="rtp-Lm-G4F"/>
