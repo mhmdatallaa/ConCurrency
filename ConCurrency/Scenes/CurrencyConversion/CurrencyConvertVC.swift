@@ -62,7 +62,6 @@ class CurrencyConvertVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = protofolioDataSource
         tableView.register(UINib(nibName: CellConstant.protofolioCellIdentifier, bundle: nil), forCellReuseIdentifier: CellConstant.protofolioCellIdentifier)
-        tableView.isScrollEnabled = false
     }
     
     private func configureDropDown() {
