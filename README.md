@@ -17,7 +17,10 @@ The currency conversion app aims to provide users with real-time and accurate cu
 4. **Currency Comparison:** The app will provide a side-by-side comparison of multiple currencies for easy analysis. Users can select multiple currencies and view their exchange rates simultaneously.
 **Team Division:**
 
-
+## Pre-Strarting
+According to **MVP** (*Minimum Vialbe Product*) & **MVA** (*Minimum Viable Archeticture*) The main purpose was:
+- Delever the Simplist Products that validate our idea.
+- Use the simplest Archeticture that follow **SOLID** Principles and best practices.
 
 
 ## Low-Level Design 
@@ -72,8 +75,6 @@ The currency conversion app aims to provide users with real-time and accurate cu
    - Debugging techniques like: *Symbolic break points*
 
 ## Further Enhancements
-According to **MVA** *Minimum Viable Architecture* : The main purpose was to implement the main features that make the app work (go to the realse phase).
-
 - Add Splach Screen 
 - Add more features ( Showing exhange rate charts, Support more currencies, ...)
 
