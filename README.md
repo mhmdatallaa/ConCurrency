@@ -53,9 +53,9 @@ According to **MVP** (*Minimum Vialbe Product*) & **MVA** (*Minimum Viable Arche
 - **Showing toast message when user add or remove from the favorites**
 - ![image](https://github.com/mhmdatallaa/CurrenSee/assets/100219531/477764fd-1bab-477b-810e-27226d83183b) ![image](https://github.com/mhmdatallaa/CurrenSee/assets/100219531/66d57c5b-cfad-448b-a4c0-a9e0e9300abe)
 
-- **User can use only decimal pad keyboard & dismiss it when tab on any part of the scereen**
-
 - **User can't enter more than one decimal seperator (.) into the Amount textField**
+- ![image](https://github.com/mhmdatallaa/ConCurrency/assets/100219531/ffa05e02-f7e3-43e2-8c64-f21b4b66d6d7)
+
 
 - Showing loading indicator while the user convert or compare currenies.
 - ![image](https://github.com/mhmdatallaa/CurrenSee/assets/100219531/b8ba1072-2d47-4b41-b899-07b78a674d0e)
@@ -68,10 +68,12 @@ According to **MVP** (*Minimum Vialbe Product*) & **MVA** (*Minimum Viable Arche
 - Try to Follow **SOLID** & best pracitices Principles
 - Use only one package dependency [iOSDropDown](https://github.com/jriosdev/iOSDropDown)
 - Worked with :
-   - UITableView
+   - UIComponents (UITableView, UISegmentControl)
    - ARC, Memory Leaks, and Capture Lists [weak self] 
-   - Network Call and Downloading Images 
+   - Network Call and Downloading Images
+   - Error Handling
    - Persistance useing `UserDefaults()`
+   - UnitTesting
    - Debugging techniques like: *Symbolic break points*
 
 ## Further Enhancements
