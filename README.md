@@ -76,9 +76,12 @@ According to **MVP** (*Minimum Vialbe Product*) & **MVA** (*Minimum Viable Arche
    - UnitTesting
    - Debugging techniques like: *Symbolic break points*
 
-## Further Enhancements
-- Add Splach Screen 
-- Add more features ( Showing exhange rate charts, Support more currencies, ...)
+## Further Enhancements 
+- Add more features:
+   - Showing exhange rate charts.
+   - Supporting more currencies.
+   -  Localization (Support more than on language).
+   -  Add Dark mode.
 
 ## Squad Members
 **Backend**
